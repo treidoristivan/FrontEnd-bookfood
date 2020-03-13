@@ -14,7 +14,7 @@ export class Login extends React.Component {
           <div className="image">
             <img src={loginImg} />
           </div>
-          <div className="form">
+          <div className="form-sign">
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input type="text" name="username" placeholder="username" />
@@ -26,7 +26,7 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn">
+          <button type="button" className="btn-sign">
             Login
           </button>
         </div>

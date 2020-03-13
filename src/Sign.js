@@ -1,9 +1,8 @@
-import React from "react";
-import "./App.scss";
-import  { Home } from "./components/home"
+import React from 'react';
+import './Sign.scss';
 import { Login, Register } from "./components/login/index";
 
-class App extends React.Component {
+class Sign extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +33,8 @@ class App extends React.Component {
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     return (
-      <div className="App">
+      <div className="Sign">
+
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
@@ -69,5 +69,4 @@ const RightSide = props => {
     </div>
   );
 };
-
-export default App;
+export default Sign;

@@ -1,12 +1,13 @@
 //Custom Fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
-.App {
+.Sign {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Open Sans", sans-serif;
+  
 }
 
 .App-logo {
@@ -42,12 +43,12 @@
 //Login Main Container
 .login {
   width: 27em;
-  height: 40em;
+  height: 37em;
   //min-height: 44em;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 10px;
   position: relative;
   z-index: 99;
   .container {
@@ -70,7 +71,7 @@
     flex-direction: column;
     justify-content: center;
     height: 90%;
-    background-color: #3498db;
+    background-color: #fed136;
     width: 100%;
     position: absolute;
     right: -34%;
@@ -96,7 +97,7 @@
     }
 
     .text {
-      font-size: 21px;
+      font-size: 26px;
       font-weight: 500;
       color: #fff;
       margin-right: 3em;
@@ -106,9 +107,10 @@
 }
 
 //Button
-.btn {
-  font-size: 21px;
+.btn-sign {
+  font-size: 20px;
   padding: 5px 20px;
+  margin-top: -10px;
   border: 0;
   background-color: #3498db;
   color: #fff;
@@ -121,4 +123,13 @@
   &:focus {
     outline: none;
   }
+}
+
+
+html,
+body,
+#root,
+.Sign {
+  width: 100%;
+  height: 100%;
 }

@@ -1,15 +1,12 @@
 {
-  "name": "login-register-react",
+  "name": "start-bootstrap",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "delay": "^4.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-pose": "^4.0.8",
-    "react-scripts": "3.0.1",
-    "react-spring": "^8.0.20",
-    "sass": "^1.26.2"
+    "node-sass": "^4.13.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,8 +28,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "node-sass": "^4.12.0"
   }
 }
