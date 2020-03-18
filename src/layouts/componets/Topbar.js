@@ -2,18 +2,25 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
 import { makeStyles, Theme } from '@material-ui/styles'
-import { AppBar, Container, Toolbar, ExpansionPanel, ExpansionPanelDetails, Button, IconButton, Link, Badge } from '@material-ui/core'
+import { AppBar, 
+  Container, 
+  Toolbar, 
+  ExpansionPanel, 
+  ExpansionPanelDetails,
+  Button, 
+  IconButton, 
+  Link, 
+  Badge 
+} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import StoreIcon from '@material-ui/icons/Store';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+
 
 import { Close, Input } from '@material-ui/icons'
 import logo from '../../assets/logo.png'
-
-
-
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -55,7 +62,7 @@ function Topbar (props) {
   }
   return (
     <>
-      <AppBar className={classes.appBar} position='fixed' elevation={0}>
+      <AppBar className={classes.appBar} position='sticky' elevation={0}>
         <Container maxWidth='lg' elevation={0}>
           <Toolbar style={{position:'relative'}}>
             <Link to='/' component={RouterLink}>

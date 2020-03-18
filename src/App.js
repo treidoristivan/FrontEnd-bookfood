@@ -21,7 +21,7 @@ import cookie from 'js-cookie'
 class App extends React.Component {
   constructor (props) {
     super(props)
-    document.title = 'Book&Food'
+    document.title = 'Book & Food'
     this.state = {
       isLogin: 0
     }

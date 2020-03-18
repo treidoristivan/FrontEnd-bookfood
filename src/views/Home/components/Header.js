@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import Carousel from 'react-material-ui-carousel'
 import { makeStyles } from '@material-ui/styles'
 import { Paper, Typography,Button} from '@material-ui/core'
-import img1 from '../assets/makan1.jpg'
+import img1 from './assets/makan.jpg'
 
 
 
 const useStyles = makeStyles(() => ({
   
   imageContainer: {
-    position: 'fixed',
+    position: 'sticky',
     marginTop:'0px',
     marginBottom:'0px',
     marginLeft:'0px',

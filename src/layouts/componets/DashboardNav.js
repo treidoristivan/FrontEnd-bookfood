@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
 import { AppBar, Container, Toolbar, IconButton, Link } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Close } from '@material-ui/icons'
 import logo from '../../assets/logo.png'
 import DashboardSide from './DashboardSide'
-import TopBar from './Topbar'
 const useStyles = makeStyles(() => ({
   appBar: {
     backgroundColor: 'black'
