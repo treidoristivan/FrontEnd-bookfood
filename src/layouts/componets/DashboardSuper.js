@@ -1,6 +1,6 @@
 import React from 'react'
 import { Drawer, Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import { Category, Dashboard, PeopleAlt, Store, Fastfood, Input } from '@material-ui/icons'
+import { Category, Dashboard, PeopleAlt, Store, Fastfood, Input, AccountCircle } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     paddingTop:'80px'
   }
 })
-export default function DashboardSide (props) {
+export default function Dashboard (props) {
   const closses = useStyles()
   const handleClose = (e) => {
     props.setOpen(0)
@@ -38,6 +38,10 @@ export default function DashboardSide (props) {
           <ListItem button to='/admin/items' component={Link}>
             <ListItemIcon><Fastfood /></ListItemIcon>
             <ListItemText primary='Items' />
+          </ListItem>
+          <ListItem button to='/profile' component={Link}>
+            <ListItemIcon><AccountCircle /></ListItemIcon>
+            <ListItemText primary='Profile' />
           </ListItem>
           <ListItem button to='/logout' component={Link}>
             <ListItemIcon><Input /></ListItemIcon>
