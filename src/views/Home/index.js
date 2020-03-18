@@ -1,7 +1,8 @@
 import React from 'react'
-import { Container, Divider, Grid, Button } from '@material-ui/core'
+//import { Container, Divider, Grid, Button } from '@material-ui/core'
 import Header from './components/Header'
-import CardItem from './components/CardItem'
+//import Restaurants from './components/Restaurants'
+//import CardItem from './components/CardItem'
 import getData from '../../helpers/getData'
 
 export default function Home (props) {
@@ -21,8 +22,7 @@ export default function Home (props) {
   }
   return (
     <>
-      <Header />
-      
+      <Header />  
     </>
   )
 }
