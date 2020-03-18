@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '.../'
 
 class Footer extends Component {
     render() {
@@ -50,9 +51,9 @@ class Footer extends Component {
                             <div className="footer-list-div">
                                 <ul>
                                     <li><a href="#">Home</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">FAQ's</a></li>
-                                    <li><a href="#">How it works</a></li>
+                                    <li><a href="#">Cart</a></li>
+                                    <li><a href="#">Sign Up</a></li>
+                                    <li><a href="#">Sign In</a></li>
                                 </ul>
                             </div>
                         </div>

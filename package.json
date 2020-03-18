@@ -18,6 +18,7 @@
     "formik": "^2.1.4",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
+    "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-material-ui-carousel": "^1.1.1",

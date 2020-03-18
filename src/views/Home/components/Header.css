@@ -14,11 +14,11 @@
 }
 
 .bg-warning{
-  background-color: #eb6825 !important;
+  background-color: #ffcc00 !important;
 }
 
 .text-warning{
- color: #eb6825 !important;
+ color: #ffcc00 !important;
 }
 
 h1{
@@ -33,6 +33,7 @@ h2{
 }
 
 h3{
+  color: #008080;
   font-size: 20px !important;
   font-family: 'Montserrat', sans-serif !important;
   letter-spacing: 1px !important;
@@ -70,7 +71,7 @@ a:hover{
 
 /* For Home.js */
 .home-cont1{
-  background: url('./views/Home/components/assets/home-top-1.jpg') no-repeat center / cover;
+  background: url('./assets/home-top-1.jpg') no-repeat center / cover;
 }
 
 .vh100{
@@ -92,7 +93,7 @@ a:hover{
 }
 
 .round-border{
-  border: 2px solid #eb6825;
+  border: 2px solid #ffcc00;
   border-radius: 100%;
   height: 126px;
   line-height: 116px;
@@ -101,7 +102,7 @@ a:hover{
 }
 
 .res-shadow{
-  box-shadow: 0 0 7px rgba(173, 173, 173, 0.32);
+  box-shadow: 0 0 7px rgba(0, 128, 128, 0.40);
 }
 
 .res-border{
@@ -109,7 +110,7 @@ a:hover{
 }
 
 .rating{
-  color: #ffc107 !important;
+  color: #ffcc00 !important;
 }
 
 /* For Navbar.js */
@@ -121,7 +122,7 @@ a:hover{
 .nav-item .active{
   font-size: 13px;
   font-weight: 700;
-  color: #eb6825 !important;
+  color: #ffcc00 !important;
 }
 
 .nav-item .btn{
@@ -130,16 +131,17 @@ a:hover{
 }
 
 .btn-warning {
-  color: #fff;
-  background-color: #eb6825;
-  border-color: #eb6825;
+  color: #008080;
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+  border-color: #008080;
   transition: all 0.3s ease-in-out !important
 }
 
 .btn-warning:hover {
-  color: #eb6825;
-  background-color: #fff;
-  border-color: #eb6825;
+  color: #ffcc00;
+  background-color: #008080;
+  border-color: #ffcc00;
 }
 
 .btn-warning:focus, .btn-warning.focus {
@@ -147,9 +149,9 @@ a:hover{
 }
 
 .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
-  color: #eb6825;
+  color: #ffcc00;
   background-color: #fff;
-  border-color: #eb6825;
+  border-color: #ffcc00;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus, .show > .btn-warning.dropdown-toggle:focus {
@@ -157,7 +159,7 @@ a:hover{
 }
 
 .home-cont3{
-  background: url('./views/Home/components/assets/call-to-action-paralax.jpg') no-repeat center / cover;
+  background: url('./assets/call-to-action-paralax.jpg') no-repeat center / cover;
 }
 
 /* For Footer.js */
@@ -185,7 +187,7 @@ a:hover{
 }
 
 .footer-list-div ul li a:hover{
-  color: #eb6825 !important;
+  color: #ffcc00 !important;
   margin-left: 10px;
   text-decoration: none;
 }
@@ -205,7 +207,7 @@ a:hover{
 }
 
 .social-media li a:hover{
-  background-color: #eb6825 !important;
+  background-color: #ffcc00 !important;
   margin: 0 !important;
   text-decoration: none;
   fill: #fff;
@@ -229,7 +231,7 @@ a:hover{
 
 /* For RegisterRestaurant */
 .register-cont1{
-  background: url('./views/Home/components/assets/fb-subheader-4.jpg') no-repeat center / cover;
+  background: url('./assets/fb-subheader-4.jpg') no-repeat center / cover;
 }
 
 .register-cont1-text{
@@ -246,7 +248,7 @@ a:hover{
 
 /* For Restaurants.js */
 .restaurants-cont1{
-  background: url('./views/Home/components/assets/fb-subheader-2.jpg') no-repeat center / cover;
+  background: url('./assets/fb-subheader-2.jpg') no-repeat center / cover;
 }
 
 .restaurants-cont1-text{
@@ -297,8 +299,8 @@ a:hover{
 
 .listing-filter ul li .custom-control-input:checked ~ .custom-control-label::before {
   color: transparent;
-  border-color: #eb6825;
-  background-color: #eb6825;
+  border-color: #ffcc00;
+  background-color: #ffcc00;
 }
 
 .listing-filter ul li .custom-control-label::before{
@@ -322,14 +324,14 @@ a:hover{
 }
 
 .sort-by ul li:hover{
-  color: #eb6825;
+  color: #ffcc00;
 }
 
 
 /* RestaurantDetails.js */
 
 .res-details-cont1{
-  background: url('./views/Home/components/assets/cover-photo20.jpg') no-repeat scroll 0 0 / cover;
+  background: url('./assets/cover-photo20.jpg') no-repeat scroll 0 0 / cover;
 }
 
 .res-details-cont1-text{
@@ -353,7 +355,7 @@ a:hover{
 }
 
 .listing-category ul li p:hover {
-  color: #eb6825 !important;
+  color: #ffcc00 !important;
 }
 
 .restaurant-title {
@@ -368,7 +370,7 @@ a:hover{
 
 .res-details-tab-active{
   background-color: white !important;
-  color: #eb6825 !important;
+  color: #ffcc00 !important;
   box-shadow: 0 -5px 4px -2px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -382,7 +384,7 @@ a:hover{
 }
 
 .res-details-tab-text:hover {
-  color: #eb6825 !important;  
+  color: #ffcc00 !important;  
 }
 
 .input-group .search-menu-input {
@@ -408,7 +410,7 @@ a:hover{
   text-align: center;
   font-size: 12px;
   border-radius: 80px;
-  border: 1px solid #eb6825;
+  border: 1px solid #ffcc00;
   padding: 4px 8px 4px 8px;
   margin: 0px 16px;
   cursor: pointer;
@@ -467,7 +469,7 @@ a:hover{
 }
 
 .order-req-tab-text:hover {
-  color: #eb6825 !important;  
+  color: #ffcc00 !important;  
 }
 
 .order-req-status{
@@ -479,7 +481,7 @@ a:hover{
 
 .order-req-tab-active{
   background-color: white !important;
-  color: #eb6825 !important;
+  color: #ffcc00 !important;
   box-shadow: 0 -5px 4px -2px rgba(0, 0, 0, 0.1) !important;
 }
 

@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles'
 import { Paper, Typography,Button} from '@material-ui/core'
 import img1 from './assets/makan.jpg'
 import 'bootstrap/dist/css/bootstrap.css';
+import '../components/Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
