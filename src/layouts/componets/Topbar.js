@@ -1,31 +1,29 @@
-import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import clsx from 'clsx'
-import { makeStyles, Theme } from '@material-ui/styles'
-import { AppBar, 
-  Container, 
-  Toolbar, 
-  ExpansionPanel, 
-  ExpansionPanelDetails,
-  Button, 
-  IconButton, 
-  Link, 
-  Badge 
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import StoreIcon from '@material-ui/icons/Store';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { createMuiTheme, Theme, createStyles, withStyles, makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { AppBar, Container, Toolbar, Button} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Close} from '@material-ui/icons';
 
 
-import { Close, Input } from '@material-ui/icons'
-import logo from '../../assets/logo.png'
 
-const useStyles = makeStyles(() => ({
+const ColorButton = withStyles((theme: Theme) => ({
+  root: {
+    color:theme.palette.getContrastText('#008080'),
+    backgroundColor: '#008080',
+    '&:hover': {
+      backgroundColor: '#ffcc00',
+
+    },
+    margin: theme.spacing(4),
+  },
+}))(Button);
+
+const useStyles = makeStyles(() => createStyles({  
   appBar: {
     marginTop:'80px',
-    backgroundColor: 'rgba(0,0,0, 0.5)',
+    backgroundColor: 'rgba(0, 128, 128, 0.2)',
     boxShadow: '0px 1px 8px #ffcc00',
     marginBottom:'0px'
   },
@@ -34,8 +32,7 @@ const useStyles = makeStyles(() => ({
     height: '70px'
   },
   ButtonCustom: {
-   
-    color: '#ffc400'
+    color: '#008080'
   },
   expandPanelIcon: {
     position:'absolute',
@@ -64,37 +61,42 @@ function Topbar (props) {
     <>
       <AppBar className={classes.appBar} position='sticky' elevation={0}>
         <Container maxWidth='lg' elevation={0}>
-          <Toolbar style={{position:'relative'}}>
-          <IconButton className={classes.ButtonCustom} to='/' component={RouterLink}>
-                      <StoreIcon /> Ini Home
-                </IconButton>
-            <div className={classes.flexGrow} />
-            <div className={classes.flexGrow} />
-              
-                <IconButton className={classes.ButtonCustom} to='carts' component={RouterLink}>
-                      <StoreIcon /> Cart
-                </IconButton>
-              
+          <Toolbar>
+
+          <ThemeProvider >
+          <ColorButton color='secondary'  to='/' component={RouterLink}>
+                 Ini Home
+                </ColorButton>      
+                <ColorButton color='secondary'  to='carts' component={RouterLink}>
+                  Ini  Cart
+                </ColorButton>
               {
                 isLogin ? (
                   <>
-                  
-                    <IconButton className={classes.ButtonCustom} to='/profile' component={RouterLink}>
-                      <AssignmentIndIcon /> Profile
-                    </IconButton>
+                    <ColorButton color='secondary'  to='/profile' component={RouterLink}>
+                      Profile
+                    </ColorButton>
                 
-                    <IconButton className={classes.ButtonCustom} to='/logout' component={RouterLink}>
-                      <AssignmentTurnedInIcon /> Log ut
-                    </IconButton>
+                    <ColorButton color='secondary'  to='/logout' component={RouterLink}>
+                       Log ut
+                    </ColorButton>
                   </>
                 ) : (
                   <>
-                  <IconButton className={classes.ButtonCustom} to='/login' component={RouterLink}>
-                      <AssignmentLateIcon /> Log in
-                    </IconButton>
+                  <ColorButton color='secondary'  to='/login' component={RouterLink}>
+                       Log in
+                    </ColorButton>
+
+                    <ColorButton variant="contained"  color="primary" className={classes.cstm} to='/register' component={RouterLink}>
+                      Sign Up
+                    </ColorButton>
                   </>
                 )
               } 
+
+          </ThemeProvider>
+
+               
         
           </Toolbar>
           
