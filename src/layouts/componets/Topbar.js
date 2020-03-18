@@ -24,9 +24,9 @@ import logo from '../../assets/logo.png'
 
 const useStyles = makeStyles(() => ({
   appBar: {
-    marginTop:'40px',
+    marginTop:'80px',
     backgroundColor: 'rgba(0,0,0, 0.5)',
-    boxShadow: '0px 1px 8px #ffc400',
+    boxShadow: '0px 1px 8px #ffcc00',
     marginBottom:'0px'
   },
   appBarImg: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
     color: '#ffc400'
   },
   expandPanelIcon: {
-    postion:'absolute',
+    position:'absolute',
     top: 0,
     right:0
   },
@@ -65,9 +65,9 @@ function Topbar (props) {
       <AppBar className={classes.appBar} position='sticky' elevation={0}>
         <Container maxWidth='lg' elevation={0}>
           <Toolbar style={{position:'relative'}}>
-            <Link to='/' component={RouterLink}>
-              <img alt='logo' src={logo} className={classes.appBarImg}/>
-            </Link>
+          <IconButton className={classes.ButtonCustom} to='/' component={RouterLink}>
+                      <StoreIcon /> Ini Home
+                </IconButton>
             <div className={classes.flexGrow} />
             <div className={classes.flexGrow} />
               

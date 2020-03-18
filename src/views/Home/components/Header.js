@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import Carousel from 'react-material-ui-carousel'
 import { makeStyles } from '@material-ui/styles'
 import { Paper, Typography,Button} from '@material-ui/core'
-import img1 from './assets/makan.jpg'
+import img1 from './assets/banner.jpg'
+import logo from './assets/logo-copy.png'
+
 import 'bootstrap/dist/css/bootstrap.css';
-import '../components/Header.css'
+import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -39,22 +41,22 @@ const useStyles = makeStyles(() => ({
     top:'36%',
     fontWeight:800,
     padding:'20px',
-    left:'30%'
+    left:'0%'
   },
   btn: {
     color: '#ffc400',
     fontWeight:800,
     backgroundColor:'#ffc400s',
-    boxShadow: '0px 1px 8px #ffc400'
+    boxShadow: '0px 1px 8px #ffcc00'
 
   },
   i:{
     fontSize:40,
-    color:'white'
+    color:'#ffcc00'
   },
   h2: {
     fontSize:65,
-    color: 'white'
+    color: '#008080'
   }
 }))
 
@@ -82,6 +84,7 @@ function Item (props) {
     <Paper elevation={0} className={classes.imageContainer}>
       <img src={props.item.img} className={classes.image} />
       <div className={classes.itemDescription}>
+      <img alt='logo' src={logo}/>
       <Typography className={classes.i}>Welcome To Our Kitchen!</Typography>
       <Typography className={classes.h2}>Delivery More Delicious</Typography>
       <Button variant='contained' color='primary'className={classes.btn}  to='/items' component={Link}>Ready To Order</Button>

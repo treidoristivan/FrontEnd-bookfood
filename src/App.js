@@ -5,7 +5,6 @@ import SuperAdminRoute from './components/SuperAdminRoute'
 import UserRoute from './components/UsersRoute'
 import MainLayout from './layouts/Main'
 import MinimalLayout from './layouts/Minimal'
-import Dashboard from './layouts/Dashboard'
 import Home from './views/Home'
 import Login from './views/Login'
 import Profile from './views/Profile'
@@ -112,7 +111,7 @@ class App extends React.Component {
             layout={MainLayout}
             isLogin={this.state.isLogin}
           />
-          <SuperAdminRoute
+          {/* <SuperAdminRoute
             exact
             path='/admin'
             title='DashBoard'
@@ -127,7 +126,7 @@ class App extends React.Component {
             component={DashboardAdmin}
             layout={Dashboard}
             isLogin={this.state.isLogin}
-          />
+          /> */}
           <GuestRoute
             title='403 Forbidden'
             exact
