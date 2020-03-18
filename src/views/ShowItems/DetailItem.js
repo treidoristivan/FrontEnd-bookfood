@@ -90,9 +90,10 @@ export default function DetailsItem (props) {
               </CardContent>
               <CardActions>
                 <Formik
-                  initialValues={{total_items:1, id_item: props.match.params.id}}
-                  validationSchema={Yup.object({total_items:Yup.number().required()})}
-                  onSubmit={async (values,form) => {
+                  enableReinitialize
+                  initialValues={{ total_items: 1, id_item: dataItem._id }}
+                  validationSchema={Yup.object({ total_items: Yup.number().required() })}
+                  onSubmit={async (values, form) => {
                     try {
                       const response = await submitData('/carts', values)
                       if (response.data.success) {
@@ -124,7 +125,7 @@ export default function DetailsItem (props) {
             </Card>
           </Grid>
         </Grid>
-        <Paper style={{ marginTop: '40px' }} >
+        <Paper style={{ marginTop: '40px' }}>
           <Tabs
             indicatorColor='secondary'
             value={value}
@@ -133,24 +134,23 @@ export default function DetailsItem (props) {
             aria-label='disabled tabs example'
           >
             <Tab label='Related Items' />
-            <Tab label='Reviews' onClick={handleClickReview}/>
+            <Tab label='Reviews' onClick={handleClickReview} />
           </Tabs>
         </Paper>
         <Grid>
           <TabPanel value={value} index={0}>
             <Grid container spacing={1}>
-              { dataItem.relatedItem &&
+              {dataItem.relatedItem &&
                 dataItem.relatedItem.map((related) => (
                   <Grid item sm={3} md={2} key={related._id} justify='center'>
                     <RelatedItem {...related} />
                   </Grid>
-                ))
-              }
+                ))}
             </Grid>
           </TabPanel>
           <TabPanel value={value} index={1}>
             <Grid align='center' justify='center' sytle={{ marginTop: '10px' }}>
-              {reviewItem ? <LayoutItemReview dataReview={reviewItem} />: <Typography variant='h6' color='textSecondary'>Has Not Review For This Item</Typography>}
+              {reviewItem ? <LayoutItemReview dataReview={reviewItem} /> : <Typography variant='h6' color='textSecondary'>Has Not Review For This Item</Typography>}
             </Grid>
           </TabPanel>
         </Grid>

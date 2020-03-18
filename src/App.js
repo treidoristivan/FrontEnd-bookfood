@@ -6,8 +6,8 @@ import AdminRoute from './components/AdminRoute'
 import UserRoute from './components/UsersRoute'
 import MainLayout from './layouts/Main'
 import MinimalLayout from './layouts/Minimal'
+import LayoutSuper from './layouts/LayoutSuper'
 import LayoutAdmin from './layouts/LayoutAdmin'
-import LayoutAdminRestaurant from './layouts/LayoutAdminRestaurant'
 import Home from './views/Home'
 import Login from './views/Login'
 import Profile from './views/Profile'
@@ -16,15 +16,15 @@ import Register from './views/Register'
 import ShowItems from './views/ShowItems'
 import DetailItem from './views/ShowItems/DetailItem'
 import ShowCarts from './views/Carts'
+import DashboardSuper from './views/DashboardSuper'
 import DashboardAdmin from './views/DashboardAdmin'
-import DashboardResAdmin from './views/DashboardResAdmin'
 import Page404 from './views/Page404'
 import Page403 from './views/Page403'
 import cookie from 'js-cookie'
 class App extends React.Component {
   constructor (props) {
     super(props)
-    document.title = 'MakanDo'
+    document.title = 'Book & Food'
     this.state = {
       isLogin: 0
     }
@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    if (cookie.get('tokenm4k4nd0')) {
+    if (cookie.get('ujang')) {
       this.setState({
         isLogin: 1
       })
@@ -121,15 +121,15 @@ class App extends React.Component {
             path='/admin'
             title='DashBoard'
             component={DashboardAdmin}
-            layout={LayoutAdmin}
+            layout={LayoutSuper}
             isLogin={this.state.isLogin}
           />
           <SuperAdminRoute
             exact
             path='/admin/:page'
             title='DashBoard'
-            component={DashboardAdmin}
-            layout={LayoutAdmin}
+            component={DashboardSuper}
+            layout={LayoutSuper}
             isLogin={this.state.isLogin}
           />
           {/* END SUPER ADMIN */}
@@ -138,16 +138,16 @@ class App extends React.Component {
             exact
             path='/restaurant/admin'
             title='DashBoard'
-            component={DashboardResAdmin}
-            layout={LayoutAdminRestaurant}
+            component={DashboardAdmin}
+            layout={LayoutAdmin}
             isLogin={this.state.isLogin}
           />
           <AdminRoute
             exact
             path='/restaurant/admin/:page'
             title='DashBoard'
-            component={DashboardResAdmin}
-            layout={LayoutAdminRestaurant}
+            component={DashboardAdmin}
+            layout={LayoutAdmin}
             isLogin={this.state.isLogin}
           />
           {/* END Admin Restaurant */}

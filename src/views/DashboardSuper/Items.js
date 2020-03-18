@@ -15,11 +15,12 @@ export default function Items (props) {
   const [initialValue, setInitialValue] = React.useState({
     id: 0, id_restaurant: '', id_category: '', name: '', quantity: 0, price: 0, description: '', images: null 
   })
-
   const [openForm, setOpenForm] = React.useState(false)
+
   const handleClickOpenForm = () => {
     setOpenForm(true)
   }
+
   const handleCloseForm = () => {
     setOpenForm(false)
   }

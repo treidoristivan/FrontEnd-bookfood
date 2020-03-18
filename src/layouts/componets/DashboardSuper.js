@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     paddingTop:'80px'
   }
 })
-export default function Dashboard (props) {
+export default function DashboardLayout (props) {
   const closses = useStyles()
   const handleClose = (e) => {
     props.setOpen(0)

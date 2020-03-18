@@ -6,10 +6,10 @@ export default function FormUser (props) {
   return (
     <Form>
       <Card elevation={0}>
-        <CardHeader title='Adding Users' titleTypographyProps={{variant: 'h5', align: 'center'}}/>
+        <CardHeader title='Adding Users' titleTypographyProps={{ variant: 'h5', align: 'center' }} />
         <CardContent>
           <Grid container justify='center'>
-            <Grid container sm={8} item spacing={2}> 
+            <Grid container sm={8} item spacing={2}>
               <Grid item md={4} xs={6}>
                 <CustomTextField
                   component={TextField}
@@ -46,11 +46,12 @@ export default function FormUser (props) {
                 >
                   {
                     [{ label: 'Male', value: 'male' },
-                      { label: 'Female', value: 'female' }].map(option => (
-                      <MenuItem key={option.value} value={option.value} >
-                        {option.label}
-                      </MenuItem>
-                    ))
+                      { label: 'Female', value: 'female' }]
+                      .map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))
                   }
                 </CustomTextField>
               </Grid>
@@ -65,13 +66,14 @@ export default function FormUser (props) {
                   variant='outlined'
                 >
                   {
-                    [{label:'User',value:1},
-                      {label:'Admin',value:2},
-                      {label:'SuperAdmin',value:3}].map(option => (
-                      <MenuItem key={option.value} value={option.value} >
-                        {option.label}
-                      </MenuItem>
-                    ))
+                    [{ label: 'User', value: 1 },
+                      { label: 'Admin', value: 2 },
+                      { label: 'SuperAdmin', value: 3 }]
+                      .map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))
                   }
                 </CustomTextField>
               </Grid>
@@ -80,7 +82,7 @@ export default function FormUser (props) {
         </CardContent>
         <CardActions>
           <Grid container justify='center'>
-            <Button color='primary' variant='contained' type='submit' >
+            <Button color='primary' variant='contained' type='submit'>
               Save User
             </Button>
           </Grid>
