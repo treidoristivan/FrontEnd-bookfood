@@ -1,12 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Grid, Card, CardHeader, Button, CardMedia, CardActions, Typography } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/styles'
-import logo from '../../../assets/2.jpg'
+import logo from '../../../assets/logo.png'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import submitData from '../../../helpers/submitData'
 import FormRegister from './FormRegister'
+
+const theme = createMuiTheme({
+  palette: {
+      
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
 const useStyles = makeStyles({
   content: {
     marginTop: '40px'
@@ -15,8 +29,8 @@ const useStyles = makeStyles({
     padding: '20px'
   },
   img: {
-    width:'100px',
-    height: '100px'
+    width:'180px',
+    height: '60px'
   }
 })
 
@@ -37,6 +51,8 @@ function LayoutRegister (props) {
   const [progres, setProgres] = React.useState(0)
   const classes = useStyles()
   return (
+    <MuiThemeProvider theme={theme}>
+
     <Grid container component='main' maxWidth='xs' justify='center' className={classes.content}>
       <Grid item md={5} lg={4} sm={8}>
         <Card className={classes.containerForm} elevation={6}>
@@ -62,7 +78,7 @@ function LayoutRegister (props) {
                   props.setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
                 }
               }}
-            >
+            > 
               <FormRegister progres={progres}/>
             </Formik>
           </CardMedia>
@@ -74,7 +90,10 @@ function LayoutRegister (props) {
           </CardActions>
         </Card>
       </Grid>
+
     </Grid>
+    </MuiThemeProvider>
+
   )
 }
 export default LayoutRegister

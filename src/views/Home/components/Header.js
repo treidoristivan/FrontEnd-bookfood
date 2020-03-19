@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Carousel from 'react-material-ui-carousel'
 import { makeStyles } from '@material-ui/styles'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Paper, Typography,Button} from '@material-ui/core'
 import img1 from './assets/banner.jpg'
 import logo from './assets/logo-copy.png'
@@ -11,7 +12,16 @@ import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 const useStyles = makeStyles(() => ({
   
@@ -87,7 +97,9 @@ function Item (props) {
       <img alt='logo' src={logo}/>
       <Typography className={classes.i}>Welcome To Our Kitchen!</Typography>
       <Typography className={classes.h2}>Delivery More Delicious</Typography>
+      <MuiThemeProvider theme={theme}>
       <Button variant='contained' color='primary'className={classes.btn}  to='/items' component={Link}>Ready To Order</Button>
+      </MuiThemeProvider>
       </div>
     </Paper>
 
@@ -128,7 +140,9 @@ function Item (props) {
         <div className="container-fluid text-center py-5 home-cont3">
           <p className="h1 text-uppercase text-white mt-5 mb-3">Just Order And We Will Deliver You</p>
           <p className="text-white mb-3">Pellentesque eget justo eget nibh luctus semper at ut tellus.</p>
-          <button type="button" className="btn btn-warning text-uppercase mb-5" onClick={() => this.handleOrderNowBtn()}><b>Order Now</b></button>
+          <MuiThemeProvider theme={theme}>
+          <Button variant='contained' color='primary'className={classes.btn}  to='/items' component={Link}> Order Now</Button>
+          </MuiThemeProvider> 
         </div>
 
         {/* Home Featured restaurant section */}

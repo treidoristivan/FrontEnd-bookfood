@@ -1,14 +1,26 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Grid, TextField, Card, CardHeader, Button, CardMedia, CardActions, Snackbar, Typography } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Alert} from '@material-ui/lab'
 import { makeStyles } from '@material-ui/styles'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import CustomTextField from '../../components/CustomTextField'
 import submitData from '../../helpers/submitData'
-import logo from '../../assets/2.jpg'
+import logo from '../../assets/logo.png'
 import Cookies from 'js-cookie'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 const useStyles = makeStyles({
   content: {
     marginTop: '40px'
@@ -18,8 +30,8 @@ const useStyles = makeStyles({
     backgroundColor: 'white'
   },
   img: {
-    width: '100px',
-    height: '100px'
+    width: '180px',
+    height: '60px'
   }
 })
 const initialFormLogin = {username: '', password: ''}
@@ -44,6 +56,8 @@ function Login (props) {
           {msg.message}
         </Alert>
       </Snackbar>
+      <MuiThemeProvider theme={theme}>
+
       <Grid container component='main' maxWidth='xs' justify='center' className={classes.content}>
         <Grid item md={5} lg={4}>
           <Card className={classes.containerForm} elevation={6}>
@@ -67,6 +81,7 @@ function Login (props) {
                   }
                 }}
               >
+
                 <Form>
                   <CustomTextField component={TextField} fullWidth margin='normal' name='username' type='text' label='Username' variant='outlined' />
                   <CustomTextField component={TextField} fullWidth margin='normal' name='password' type='password' label='password' variant='outlined' />
@@ -75,7 +90,7 @@ function Login (props) {
                     fullWidth
                     size='large'
                     variant='contained'
-                    color='primary'
+                    color='secondary'
                   >
                     <strong>Sign In</strong>
                   </Button>
@@ -88,9 +103,12 @@ function Login (props) {
               Sign Up
             </Button>
             </CardActions>
+
           </Card>
         </Grid>
       </Grid>
+      </MuiThemeProvider>
+
     </>
   )
 }
