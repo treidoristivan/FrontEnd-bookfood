@@ -3,7 +3,21 @@ import {
   Container, Grid, Typography, Card,
   CardContent, CardActions, Button
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import getData from '../../../helpers/getData'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
+
 export default function CheckoutDetails (props) {
   const { setMsg } = props
   const handleClick = (step) => (e) => {
@@ -28,12 +42,14 @@ export default function CheckoutDetails (props) {
   }, [props])
   return (
     <>
+         <MuiThemeProvider theme={theme}>
+
       <Grid container justify='center' component={Container}>
         <Grid item sm={10} md={8}>
           <Card>
             <CardContent>
               <Typography variant='h5' align='center' style={{ marginBottom: '10px' }}>
-                Details Purchase
+                Cart Details Purchase
               </Typography>
               <Typography align='center'>
                 Total Price: {detailCheckout.totalPrice}
@@ -42,7 +58,7 @@ export default function CheckoutDetails (props) {
                 Total Type Items: {detailCheckout.totalTypeItems}
               </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions style={{ marginTop: 20, marginBottom: 30 }}>
               <div style={{ flexGrow: 1 }} />
               <Button size='small' variant='outlined' color='secondary' onClick={handleClick(0)}>Back</Button>
               <Button size='small' variant='contained' color='secondary' onClick={handleCheckout}>Checkout</Button>
@@ -51,6 +67,7 @@ export default function CheckoutDetails (props) {
           </Card>
         </Grid>
       </Grid>
+      </MuiThemeProvider>
     </>
   )
 }

@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-  Slide, Snackbar, Dialog, Grid, Typography, IconButton
-} from '@material-ui/core'
+import {Slide, Snackbar, Dialog, Grid, Typography, IconButton} from '@material-ui/core'
 import { Close as CloseIcon, Edit as EditIcon } from '@material-ui/icons'
 import { Alert, SpeedDial, SpeedDialIcon } from '@material-ui/lab'
 import FormItem from './components/FormItem'

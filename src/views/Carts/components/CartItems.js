@@ -4,13 +4,27 @@ import {
   TableRow, TableBody, TableCell, Avatar, IconButton,
   Button, TextField, Dialog, DialogContent, DialogContentText, DialogActions
 } from '@material-ui/core'
-import { Edit, Delete, Check } from '@material-ui/icons'
+import { Edit, Delete } from '@material-ui/icons'
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import CustomTextField from '../../../components/CustomTextField'
 import deleteData from '../../../helpers/deleteData'
 import patchData from '../../../helpers/patchData'
 import AlertDelete from '../../../components/AlertDelete'
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 export default function CartItems (props) {
   const { setMsg } = props
@@ -53,6 +67,8 @@ export default function CartItems (props) {
   }, [props])
   return (
     <>
+     <MuiThemeProvider theme={theme}>
+
       <AlertDelete
         open={openDialogDelete}
         maxWidth='sm'
@@ -67,7 +83,7 @@ export default function CartItems (props) {
         fullWidth='md'
         onClose={() => setOpenForm(0)}
       >
-        <DialogContentText align='center' style={{ marginTop: '10px' }}> Edit Total Items </DialogContentText>
+        <DialogContentText align='center' style={{ marginTop: '10px' }}>Add or Less items</DialogContentText>
         <DialogContent>
           <Formik
             enableReinitialize
@@ -93,15 +109,17 @@ export default function CartItems (props) {
             <Form align='center' style={{ marginTop: '10px' }}>
               <CustomTextField size='small' type='number' name='total_items' label='Total Items' variant='outlined' component={TextField} />
               <Button size='small' type='submit'>
-                <Check />
+                <ExitToAppOutlinedIcon fontSize='large' />
               </Button>
             </Form>
           </Formik>
         </DialogContent>
         <DialogActions>
-          <Button color='primary' onClick={() => setOpenForm(0)}>
+          <Grid container justify='center'>
+          <Button variant='contained'  color='primary' onClick={() => setOpenForm(0)}>
             Cancel
           </Button>
+          </Grid>
         </DialogActions>
       </Dialog>
       <Grid container justify='center' component={Container}>
@@ -139,15 +157,16 @@ export default function CartItems (props) {
           </TableContainer>
         </Grid>
       </Grid>
-      <Grid container justify='center' component={Container} style={{ marginTop: 20 }}>
+      <Grid container justify='center' component={Container} style={{ marginTop: 20, marginBottom: 30 }}>
         <Button
           color='secondary'
           variant='contained'
           onClick={handleClick}
         >
-          Details Checkout
+          Cart Details
         </Button>
       </Grid>
+      </MuiThemeProvider>
     </>
   )
 }

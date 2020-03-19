@@ -22,7 +22,7 @@ const ColorButton = withStyles((theme: Theme) => ({
 
 const useStyles = makeStyles(() => createStyles({  
   appBar: {
-    marginTop:'80px',
+    
     backgroundColor: 'rgba(0, 128, 128, 0.2)',
     boxShadow: '0px 1px 8px #ffcc00',
     marginBottom:'0px'

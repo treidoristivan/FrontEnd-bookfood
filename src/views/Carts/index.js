@@ -3,11 +3,23 @@ import {
   Container, Stepper, Step, StepLabel,
   Typography, Snackbar
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab'
 import CartItems from './components/CartItems'
 import CheckoutDetails from './components/CheckoutDetails'
 import CheckoutDone from './components/CheckoutDone'
 import getData from '../../helpers/getData'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 function getStepContent (page, setActiveStep, data, setMsg) {
   switch (page) {
@@ -43,6 +55,8 @@ function ShowCarts (props) {
   }, [activeStep, msg])
   return (
     <>
+         <MuiThemeProvider theme={theme}>
+
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}
@@ -53,23 +67,24 @@ function ShowCarts (props) {
           <Stepper activeStep={activeStep}>
             <Step>
               <StepLabel>
-                <Typography color='secondary'><strong>Cart Items</strong></Typography>
+                <Typography color='primary'><strong>Cart Items</strong></Typography>
               </StepLabel>
             </Step>
             <Step>
               <StepLabel>
-                <Typography color='secondary'><strong>Checkout Details</strong></Typography>
+                <Typography color='primary'><strong>Cart Details</strong></Typography>
               </StepLabel>
             </Step>
             <Step>
               <StepLabel>
-                <Typography color='secondary'><strong>Done</strong></Typography>
+                <Typography color='primary'><strong>Cart Chekout</strong></Typography>
               </StepLabel>
             </Step>
           </Stepper>
         </Container>
       </div>
       {getStepContent(activeStep, setActiveStep, dataCart, setMsg)}
+      </MuiThemeProvider>
     </>
   )
 }

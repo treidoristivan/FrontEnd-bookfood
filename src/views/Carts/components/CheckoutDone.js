@@ -1,5 +1,17 @@
 import React from 'react'
 import { Container, CircularProgress, Grid, Typography, Button } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 export default function CheckoutDone (props) {
   let success
@@ -11,10 +23,12 @@ export default function CheckoutDone (props) {
       clearTimeout(success)
       return (
         <>
+        <MuiThemeProvider theme={theme}>
           <Typography variant='h5' align='center' style={{ marginBottom: '10px' }}>Congratulation Checkout Success</Typography>
           <Grid container justify='center'>
             <Button size='small' variant='contained' color='secondary' onClick={handleClick(0)}>Back</Button>
           </Grid>
+          </MuiThemeProvider>
         </>)
     } else {
       success = setTimeout(() => {

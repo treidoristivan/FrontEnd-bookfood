@@ -5,6 +5,7 @@ import {
   CardActions, Typography, Button, Avatar,
   TextField, Paper, Tab, Tabs, Snackbar
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab'
 import { AddShoppingCart } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
@@ -15,10 +16,23 @@ import submitData from '../../helpers/submitData'
 import TabPanel from '../../components/TabPanel'
 import RelatedItem from './components/RelatedItem'
 import LayoutItemReview from './components/ReviewItems'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
 const useStyles = makeStyles({
   avatar: {
     height: '250px',
-    width: '250px'
+    width: '250px',
+    
   }
 })
 
@@ -62,17 +76,18 @@ export default function DetailsItem (props) {
   }
   return (
     <>
+    <MuiThemeProvider theme={theme}>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}
         </Alert>
       </Snackbar>
       <Container>
-        <Grid container justify='center' alignItems='center' style={{ marginTop: '40px' }}>
-          <Grid item sm={5} md={3}>
-            <Avatar alt={dataItem.name} src={(process.env.REACT_APP_API_URL + '/' + dataItem.images)} className={classes.avatar} />
+        <Grid container>
+          <Grid item xs={12} sm={4}>
+            <Avatar variant='rounded' alt={dataItem.name} src={(process.env.REACT_APP_API_URL + '/' + dataItem.images)} className={classes.avatar} />
           </Grid>
-          <Grid item sm={5} md={3}>
+          <Grid item xs={12} sm={8}>
             <Card>
               <CardContent>
                 <Typography gutterBottom variant='h6' color='textSecondary'>
@@ -108,14 +123,15 @@ export default function DetailsItem (props) {
                     }
                   }}
                 >
-                  <Form>
-                    <Grid container spacing={3} justify='flex-end' alignItems='center'>
+                  <Form >
+                    <Grid container spacing={3} justify='center' alignItems='center'>
                       <Grid item xs={5}>
                         <CustomTextField type='number' name='total_items' label='Total Items' variant='outlined' size='small' component={TextField} />
                       </Grid>
-                      <Grid item xs={4}>
-                        <Button size='small' type='submit' color='secondary' variant='contained' width='100%'>
+                      <Grid item xs={12} >
+                        <Button size='medium' fullWidth type='submit' color='secondary' variant='contained' >
                           <AddShoppingCart />
+                          Add To Cart
                         </Button>
                       </Grid>
                     </Grid>
@@ -129,7 +145,7 @@ export default function DetailsItem (props) {
           <Tabs
             indicatorColor='secondary'
             value={value}
-            textColor='primary'
+            textColor='secondary'
             onChange={handleChange}
             aria-label='disabled tabs example'
           >
@@ -142,7 +158,7 @@ export default function DetailsItem (props) {
             <Grid container spacing={1}>
               {dataItem.relatedItem &&
                 dataItem.relatedItem.map((related) => (
-                  <Grid item sm={3} md={2} key={related._id} justify='center'>
+                  <Grid item xs={4} key={related._id} justify='center'>
                     <RelatedItem {...related} />
                   </Grid>
                 ))}
@@ -155,6 +171,7 @@ export default function DetailsItem (props) {
           </TabPanel>
         </Grid>
       </Container>
+      </MuiThemeProvider>
     </>
   )
 }
