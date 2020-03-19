@@ -2,22 +2,35 @@ import React from 'react'
 import {
   Paper, Grid, Avatar, Typography, Button, makeStyles, TextField, IconButton, Box
 } from '@material-ui/core'
-import { Edit, Image } from '@material-ui/icons'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import { Image } from '@material-ui/icons'
 import * as Yup from 'yup'
 import { Formik, Form } from 'formik'
 import submitData from '../../../helpers/submitData'
 import CustomTextField from '../../../components/CustomTextField'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 const useStyles = makeStyles({
   paper: {
-    padding: '20px'
+    padding: '20px',
+    marginBottom: '40px'
   },
   avatar: {
-    height: '140px',
-    width: '140px'
+    height: '180px',
+    width: '80%'
   },
   balance: {
-    backgroundColor: '#1891cc',
-    color: 'white',
+    color: '#008080',
     fontWeight: 600,
     height: '50px',
     lineHeight: '50px',
@@ -25,22 +38,30 @@ const useStyles = makeStyles({
   },
   iconEditPic: {
     position: 'absolute',
-    top: '25%',
+    top: '23%',
     bottom: '25%',
-    left: '43%',
-    right: '43%'
-  }
+    left: '81%',
+    
+  },
+  edit: {
+    position: 'absolute',
+    top: '38%',
+    left: '80%',
+    
+    }
 })
 export default function CardProfile (props) {
   const { userPic, userData, statusEdit, setStatusEdit, setMsg } = props
   const classes = useStyles()
   return (
+    <MuiThemeProvider theme={theme}>
+
     <Paper className={classes.paper} elevation={3}>
-      <Button onClick={() => { setStatusEdit({ profile: !statusEdit.profile }) }}><Edit style={{ backgroundColor: '#f50057', padding: '10px', color: 'white' }} /></Button>
-      <Grid container justify='center' style={{ position: 'relative' }}>
-        <Avatar alt={userData.username} src={userPic ? userPic : `${process.env.REACT_APP_API_URL}/${userData.picture}`} className={classes.avatar} />
+      <Button className={classes.edit} color='primary' onClick={() => { setStatusEdit({ profile: !statusEdit.profile }) }}>< EditOutlinedIcon/> Edit</Button>
+      <Grid  container  justify='center' >
+        <Avatar variant='rounded' alt={userData.username} src={userPic ? userPic : `${process.env.REACT_APP_API_URL}/${userData.picture}`} className={classes.avatar} />
         <Box className={classes.iconEditPic} hidden={!statusEdit.profile}>
-          <IconButton component='label' for='userProfileField' style={{ backgroundColor: 'rgba(0,0,0,.7)' }}><Image style={{ height: '40px', width: '40px', color: 'white' }} /></IconButton>
+          <IconButton component='label' for='userProfileField' style={{ backgroundColor: 'rgba(255, 255, 255,.7)' }}><Image style={{ height: '25px', width: '25px', color: '#ffcc00' }} /></IconButton>
         </Box>
       </Grid>
       <Typography gutterBottom variant='h6' color='textSecondary' align='center' style={{ marginTop: '15px' }}>
@@ -92,5 +113,6 @@ export default function CardProfile (props) {
         </Form>
       </Formik>
     </Paper>
+    </MuiThemeProvider>
   )
 }

@@ -7,10 +7,22 @@ import {
   List, ListItem, ListItemAvatar, ListItemText, ExpansionPanel, ExpansionPanelSummary,
   ExpansionPanelDetails, Card, CardContent, Snackbar
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab'
-import { Work } from '@material-ui/icons'
+import RateReviewIcon from '@material-ui/icons/RateReview';
 import { makeStyles } from '@material-ui/styles'
 import getData from '../../helpers/getData'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 const useStyles = makeStyles({
   expanded: {
@@ -66,6 +78,8 @@ export default function Profile (props) {
   }, [statusEdit, userPic])
   return (
     <>
+          <MuiThemeProvider theme={theme}>
+
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}
@@ -73,18 +87,15 @@ export default function Profile (props) {
       </Snackbar>
       <Container style={{ marginTop: '50px' }}>
         <Grid container justify='space-between' spacing={2}>
-          <Grid item xs={12} sm={6} md={5} style={{ position: 'relative', overflow: 'hidden' }}>
+          <Grid item xs={12}  style={{ position: 'relative', overflow: 'hidden' }}>
             <CardProfile userPic={userPic} userData={userData} statusEdit={statusEdit} setStatusEdit={setStatusEdit} setMsg={setMsg} />
             <CardEditProfile setUserPic={setUserPic} userData={userData} setUserData={setUserData} statusEdit={statusEdit} setStatusEdit={setStatusEdit} setMsg={setMsg} />
           </Grid>
-          <Grid item sm={6} md={6} elevation={3}>
+          <Grid item xs={12} elevation={3}>
             <Typography gutterBottom variant='h6' color='textPrimary' align='center' style={{ marginTop: '30px', marginBottom: '20px' }}>
               Special Application
             </Typography>
             <Grid container justify='center'>
-              <Button size='small' color='secondary' variant='contained' to='/carts' component={Link} style={{ margin: '2px' }}>
-                See Cart
-              </Button>
               {
                 userData.is_admin ? (
                   <Button size='small' color='secondary' variant='contained' to='/restaurant/admin' component={Link} style={{ margin: '2px' }}>
@@ -105,11 +116,11 @@ export default function Profile (props) {
                 <ExpansionPanelSummary>
                   <ListItem>
                     <ListItemAvatar>
-                      <Avatar>
-                        <Work />
+                      <Avatar variant='rounded'>
+                        <RateReviewIcon />
                       </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary='Recently Review Item' />
+                    <ListItemText primary='Reviews ' />
                   </ListItem>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails className={classes.expanded}>
@@ -137,6 +148,7 @@ export default function Profile (props) {
           </Grid>
         </Grid>
       </Container>
+      </MuiThemeProvider>
     </>
   )
 }

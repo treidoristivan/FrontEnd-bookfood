@@ -2,26 +2,46 @@ import React from 'react'
 import {
   Paper, Grid, Button, TextField, MenuItem
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { MuiThemeProvider, createMuiTheme, createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
 import CustomTextField from '../../../components/CustomTextField'
 import pacthData from '../../../helpers/patchData'
-const useStyles = makeStyles({
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+   
   editProfile: {
     position: 'absolute',
-    paddingTop: '20px',
+    marginTop:'60px',
+
     left: '20px',
     top: '42%',
     right: '20px',
-    bottom: '80px'
+    bottom: '60px'
   }
 })
+)
 
 export default function CardEditProfile (props) {
   const classes = useStyles()
   const { userData, setUserPic, statusEdit, setMsg, setStatusEdit } = props
   return (
+    <MuiThemeProvider theme={theme}>
+
     <Paper elevation={0} className={classes.editProfile} hidden={!statusEdit.profile}>
       <Formik
         enableReinitialize
@@ -48,16 +68,16 @@ export default function CardEditProfile (props) {
           }
           setStatusEdit({ profile: false })
         }}
-      >
-        <Form>
-          <Grid container spacing={3} justify='center' alignItems='center'>
-            <Grid item xs={5}>
+      > 
+        <Form >
+          <Grid container justify='center' alignItems='center' spacing={4} >
+            <Grid item xs={3}>
               <CustomTextField type='text' name='fullname' label='Full Name' variant='outlined' size='small' component={TextField} />
             </Grid>
-            <Grid item xs={5}>
-              <CustomTextField type='text' name='email' label='E-Mail' variant='outlined' size='small' component={TextField} />
+            <Grid item xs={3}>
+              <CustomTextField type='text' name='email' label='E-mail' variant='outlined' size='small' component={TextField} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={3}>
               <CustomTextField component={TextField} fullWidth label='Gender' margin='dense' name='gender' select variant='outlined'>
                 {
                   [{ label: 'Male', value: 'male' },
@@ -66,9 +86,7 @@ export default function CardEditProfile (props) {
                 }
               </CustomTextField>
             </Grid>
-            <Grid item xs={5}>
-              <CustomTextField type='text' name='address' label='Address' variant='outlined' size='small' component={TextField} />
-            </Grid>
+            
             <div style={{ display: 'none' }}>
               <Field
                 component={({ field, form, ...props }) => (
@@ -82,14 +100,20 @@ export default function CardEditProfile (props) {
                 )}
               />
             </div>
-            <Grid item xs={4} container justify='center'>
-              <Button size='small' color='secondary' variant='contained' width='100%' type='submit'>
+
+
+            <Grid item xs={12} container justify='center' >
+              <CustomTextField style={{width:'78%'}}  type='text' name='address' label='Address' variant='outlined' size='medium' component={TextField} />
+          </Grid>
+          <Grid item xs={12} container justify='center'>
+              <Button size='medium' color='secondary' variant='contained' type='submit' style={{width:'78%'}}>
                 Save
               </Button>
-            </Grid>
+          </Grid>
           </Grid>
         </Form>
       </Formik>
     </Paper>
+    </MuiThemeProvider>
   )
 }

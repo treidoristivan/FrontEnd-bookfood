@@ -8,9 +8,8 @@ function MainLayout (props) {
     <>
       <Topbar isLogin={isLogin} />
       {children}
-
       <Footer isLogin={isLogin}/>
-      {children}
+    
     </>
   )
 }
