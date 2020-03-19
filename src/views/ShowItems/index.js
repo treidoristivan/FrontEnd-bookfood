@@ -5,8 +5,20 @@ import {
   Card, CardContent, CardActions,
   Typography, Button, Grid, Avatar, Container
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Pagination } from '@material-ui/lab'
 import getData from '../../helpers/getData'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 const useStyles = makeStyles({
   listCategories: {
     borderBottom: '1px solid #ccc',
@@ -70,6 +82,8 @@ function ShowItems (props) {
   }, [activeCategory, page])
   return (
     <>
+          <MuiThemeProvider theme={theme}>
+
       <div className={classes.listCategories}>
         <Container>
           <Grid container className={classes.grid}>
@@ -110,7 +124,7 @@ function ShowItems (props) {
                 </Grid>
               )) : (
                 <Typography gutterBottom variant='subtite1' color='primary'>
-                    Item Not Found
+                    Item Feature Soon !
                 </Typography>
               )
             }
@@ -123,26 +137,9 @@ function ShowItems (props) {
               </Grid>
             )
           }
-          {/* <Dialog
-            fullScreen={fullScreen}
-            open={open}
-            onClose={handleClose}
-            aria-labelledby='responsive-dialog-title'
-          >
-            <DialogTitle id='responsive-dialog-title'>How Many Item</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-              <TextField id='outlined-basic' fullWidth margin='normal' label='Total Item' variant='outlined' />
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button autoFocus onClick={handleClose} color='primary'>
-                Submit
-              </Button>
-            </DialogActions>
-          </Dialog> */}
         </Container>
       </div>
+      </MuiThemeProvider>
     </>
   )
 }
