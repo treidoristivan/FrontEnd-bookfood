@@ -5,6 +5,7 @@ import {
   Card, CardContent, CardActions,
   Typography, Button, Grid, Avatar, Container
 } from '@material-ui/core'
+import { AddShoppingCart } from '@material-ui/icons'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Pagination } from '@material-ui/lab'
 import getData from '../../helpers/getData'
@@ -24,6 +25,9 @@ const useStyles = makeStyles({
     borderBottom: '1px solid #ccc',
     minHeight: '100px',
     marginBottom: '50px'
+  },
+  cont: {
+    marginBottom:'40px'
   },
   buttonCategories: {
     marginLeft: '10px',
@@ -97,28 +101,31 @@ function ShowItems (props) {
         </Container>
       </div>
       <div className={classes.listItems}>
-        <Container>
+        <Container className={classes.cont}>
           <Grid container justify='center' spacing={2}>
             {
               dataItems.dataItems ? dataItems.dataItems.map((item) => (
-                <Grid item key={item._id} md={2} sm={4} xs={6}>
+                <Grid item key={item._id} xs={3}>
                   <Card align='center' style={{ padding: '10px' }}>
-                    <Avatar alt={item.name} src={process.env.REACT_APP_API_URL + '/' + item.images} className={classes.avatar} />
+                    <Avatar variant='rounded' alt={item.name} src={process.env.REACT_APP_API_URL + '/' + item.images} className={classes.avatar} />
                     <CardContent>
                       <Typography gutterBottom variant='subtite1' color='primary'>
                         {item.name}
                       </Typography>
                       <Typography gutterBottom variant='h6'>
-                        Rp. {parseFloat(item.price).toFixed(2)}
+                        Rp.{parseFloat(item.price).toFixed(2)}
                       </Typography>
                     </CardContent>
-                    <CardActions>
-                      {/* <Button size='small' color='secondary' variant='contained'>
-                        <AddShoppingCart />
-                      </Button> */}
+                    <CardActions > 
+                      <Grid container justify='center'>
+                      <Button size='small' color='secondary' variant='contained'>
+                        <AddShoppingCart /> 
+                      </Button>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
                       <Button size='small' color='primary' variant='contained' to={`/items/${item._id}`} component={Link}>
                       Details
                       </Button>
+                      </Grid>
                     </CardActions>
                   </Card>
                 </Grid>
