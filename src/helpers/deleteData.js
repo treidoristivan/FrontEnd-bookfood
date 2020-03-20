@@ -6,7 +6,7 @@ function deleteData (dataUrl, dataForm) {
     if (cookie.get('ujang')) {
       config.headers = { Authorization: `Bearer ${cookie.get('ujang')}` }
     }
-    const url = process.env.REACT_APP_API_URL + dataUrl
+    const url = `http://localhost:1000${dataUrl}`
     axios.delete(url, config).then(result => {
       resolve(result)
     }).catch((e) => {

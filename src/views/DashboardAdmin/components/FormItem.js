@@ -65,6 +65,7 @@ export default function FormItem (props) {
       initialValues={initialValue}
       validationSchema={!update ? validateCreate : validateUpdate}
       onSubmit={async (values, form) => {
+        
         try {
           let response
           const formData = new FormData()
@@ -78,6 +79,7 @@ export default function FormItem (props) {
               formData.append(v, values[v])
             })
             response = await patchData(`/items/${update}`, formData)
+            console.log(response)
           }
           if (response.data.success) {
             showMessage(response.data)

@@ -46,13 +46,15 @@ export default function ListItem (props) {
   }
   const deleteItem = async (id) => {
     try {
+      console.log('chek')
       const response = await deleteData(`/items/${id}`)
       console.log(response)
       setOpenDialogDelete(0)
       props.showMessage(response.data)
+      console.log('hekk', response)
     } catch (e) {
       console.log(e)
-      console.log(e.response)
+      console.log(e.response.data)
       props.showMessage(e.response.data)
     }
   }
@@ -95,7 +97,7 @@ export default function ListItem (props) {
                     </TableCell>
                     <TableCell>
                       <Avatar
-                        alt={item.name_item ? item.name_item : 'item' + item._id} src={(process.env.REACT_APP_API_URL + '/' + item.images)}
+                        alt={item.name_item ? item.name_item : 'item' + item._id} src={(process.env.REACT_APP_API_BASE_URL + '/' + item.images)}
                         style={{ height: '50px', width: '50px' }}
                       />
                     </TableCell>
