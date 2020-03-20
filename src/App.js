@@ -20,101 +20,68 @@ import DashboardSuper from './views/DashboardSuper'
 import DashboardAdmin from './views/DashboardAdmin'
 import Page404 from './views/Page404'
 import Page403 from './views/Page403'
-import cookie from 'js-cookie'
-class App extends React.Component {
-  constructor (props) {
-    super(props)
-    document.title = 'Book & Food'
-    this.state = {
-      isLogin: 0
-    }
-    this.setIsLogin = this.setIsLogin.bind(this)
-  }
 
-  setIsLogin (setTO) {
-    this.setState({
-      isLogin: setTO
-    })
-  }
-
-  componentDidMount () {
-    if (cookie.get('ujang')) {
-      this.setState({
-        isLogin: 1
-      })
-    }
-  }
-
-  render () {
-    return (
-      <Router>
-        <Switch>
-          <GuestRoute
-            exact
-            path='/'
-            component={Home}
-            title='Home'
-            layout={MainLayout}
-            isLogin={this.state.isLogin}
-          />
-          <GuestRoute
-            exact
-            path='/login'
-            title='Login'
-            component={Login}
-            layout={MinimalLayout}
-            isLogin={this.state.isLogin}
-            setIsLogin={this.setIsLogin}
-          />
-          <GuestRoute
-            exact
-            path='/logout'
-            title='Logout'
-            component={Logout}
-            layout={MinimalLayout}
-            isLogin={this.state.isLogin}
-            setIsLogin={this.setIsLogin}
-          />
-          <GuestRoute
-            exact
-            path='/register'
-            title='Registrasi'
-            component={Register}
-            layout={MinimalLayout}
-            isLogin={this.state.isLogin}
-          />
-          <GuestRoute
-            exact
-            path='/items'
-            title='Items'
-            component={ShowItems}
-            layout={MainLayout}
-            isLogin={this.state.isLogin}
-          />
-          <GuestRoute
-            exact
-            path='/items/:id'
-            title='Items'
-            component={DetailItem}
-            layout={MainLayout}
-            isLogin={this.state.isLogin}
-          />
-                <UserRoute
-                  exact
-                  path='/carts'
-                  title='Cart'
-                  component={ShowCarts}
-                  layout={MainLayout}
-                  isLogin={this.state.isLogin}
-                />
-                <UserRoute
-                  exact
-                  path='/profile'
-                  title='Profile'
-                  component={Profile}
-                  layout={MainLayout}
-                  isLogin={this.state.isLogin}
-                />
+function App (props) {
+  return (
+    <Router>
+      <Switch>
+        <GuestRoute
+          exact
+          path='/'
+          component={Home}
+          title='Home'
+          isHome={1}
+          layout={MainLayout}
+        />
+        <GuestRoute
+          exact
+          path='/login'
+          title='Login'
+          component={Login}
+          layout={MinimalLayout}
+        />
+        <GuestRoute
+          exact
+          path='/logout'
+          title='Logout'
+          component={Logout}
+          layout={MinimalLayout}
+        />
+        <GuestRoute
+          exact
+          path='/register'
+          title='Registrasi'
+          component={Register}
+          layout={MinimalLayout}
+        />
+        <GuestRoute
+          exact
+          path='/items'
+          title='Items'
+          component={ShowItems}
+          layout={MainLayout}
+        />
+        <GuestRoute
+          exact
+          path='/items/:id'
+          title='Items'
+          component={DetailItem}
+          layout={MainLayout}
+        />
+        <UserRoute
+          exact
+          path='/carts'
+          title='Cart'
+          component={ShowCarts}
+          layout={MainLayout}
+        />
+        <UserRoute
+          exact
+          path='/profile'
+          title='Profile'
+          component={Profile}
+          layout={MainLayout}
+        />
 
 
                     {/* START SUPER ADMIN */}
@@ -124,7 +91,6 @@ class App extends React.Component {
                       title='DashBoard'
                       component={DashboardAdmin}
                       layout={LayoutSuper}
-                      isLogin={this.state.isLogin}
                     />
                     <SuperAdminRoute
                       exact
@@ -132,7 +98,6 @@ class App extends React.Component {
                       title='DashBoard'
                       component={DashboardSuper}
                       layout={LayoutSuper}
-                      isLogin={this.state.isLogin}
                     />
                     {/* END SUPER ADMIN */}
 
@@ -144,7 +109,6 @@ class App extends React.Component {
                                 title='DashBoard'
                                 component={DashboardAdmin}
                                 layout={LayoutAdmin}
-                                isLogin={this.state.isLogin}
                               />
                               <AdminRoute
                                 exact
@@ -152,27 +116,26 @@ class App extends React.Component {
                                 title='DashBoard'
                                 component={DashboardAdmin}
                                 layout={LayoutAdmin}
-                                isLogin={this.state.isLogin}
                               />
                               {/* END Admin Restaurant */}
+
+
                               <GuestRoute
                                 title='403 Forbidden'
                                 exact
                                 path='/403'
                                 component={Page403}
                                 layout={MainLayout}
-                                isLogin={this.state.isLogin}
                               />
                               <GuestRoute
                                 title='404 Not Found'
                                 component={Page404}
                                 layout={MainLayout}
-                                isLogin={this.state.isLogin}
                               />
         </Switch>
       </Router>
     )
   }
-}
+
 
 export default App

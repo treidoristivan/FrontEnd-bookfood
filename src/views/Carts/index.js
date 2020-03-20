@@ -8,7 +8,8 @@ import { Alert } from '@material-ui/lab'
 import CartItems from './components/CartItems'
 import CheckoutDetails from './components/CheckoutDetails'
 import CheckoutDone from './components/CheckoutDone'
-import getData from '../../helpers/getData'
+import { connect } from 'react-redux'
+import { getCart } from '../../store/actions'
 
 const theme = createMuiTheme({
   palette: {
@@ -36,22 +37,22 @@ function getStepContent (page, setActiveStep, data, setMsg) {
   }
 }
 function ShowCarts (props) {
+  const [dataCart, getCart] = props
   const [activeStep, setActiveStep] = React.useState(0)
-  const [dataCart, setDataCart] = React.useState({})
   const [msg, setMsg] = React.useState({ display: 0, success: false, message: '' })
   const handleClose = () => {
     setMsg({ display: 0 })
   }
-  const getCartData = async () => {
-    try {
-      const response = await getData('/carts?sort[created_at]=1')
-      setDataCart(response.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // const getCartData = async () => {
+  //   try {
+  //     const response = await getData('/carts?sort[created_at]=1')
+  //     setDataCart(response.data)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
   React.useEffect(() => {
-    getCartData()
+    getCart()
   }, [activeStep, msg])
   return (
     <>
@@ -89,4 +90,12 @@ function ShowCarts (props) {
   )
 }
 
-export default ShowCarts
+const mapStateToProps = (state) => ({
+  dataCart: state.dataCart
+})
+const mapDispatchToProps = {
+  getCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowCarts)
+

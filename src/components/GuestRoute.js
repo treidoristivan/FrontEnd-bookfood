@@ -2,13 +2,13 @@ import React from 'react'
 import { Route as RouterLink } from 'react-router-dom'
 function CustomRoute (props) {
   document.title = props.title
-  const { layout: Layout, component: Component, isLogin, setIsLogin, ...anotherProps } = props
+  const { layout: Layout, component: Component, isHome, ...anotherProps } = props
   return (
     <RouterLink
       {...anotherProps}
       render={(matchProps) => (
-        <Layout isLogin={isLogin}>
-          <Component {...matchProps} isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Layout isHome={isHome}>
+          <Component {...matchProps} />
         </Layout>
       )}
     />

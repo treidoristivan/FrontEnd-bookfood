@@ -1,13 +1,15 @@
 import axios from 'axios'
-import cookie from 'js-cookie'
+import storage from '../store'
+
 function submitData (dataUrl, dataForm) {
-  const config = {}
-  if (cookie.get('ujang')) {
-    config.headers = { Authorization: `Bearer ${cookie.get('ujang')}` }
-  }
   return new Promise((resolve, reject) => {
+    const config = {}
+    const token = storage.store.getState().dataUser.token
+    if (token) {
+      config.headers = { Authorization: `Bearer ${token}` }
+    }
     const url = process.env.REACT_APP_API_BASE_URL + dataUrl
-    axios.post(url, dataForm,config).then(result => {
+    axios.post(url, dataForm, config).then(result => {
       resolve(result)
     }).catch((e) => {
       reject(e)

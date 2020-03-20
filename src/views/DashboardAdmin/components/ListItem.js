@@ -46,12 +46,10 @@ export default function ListItem (props) {
   }
   const deleteItem = async (id) => {
     try {
-      console.log('chek')
       const response = await deleteData(`/items/${id}`)
       console.log(response)
       setOpenDialogDelete(0)
       props.showMessage(response.data)
-      console.log('hekk', response)
     } catch (e) {
       console.log(e)
       console.log(e.response.data)

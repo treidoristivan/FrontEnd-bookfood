@@ -1,0 +1,7 @@
+export const SET_USER_LOGIN = 'SET_USER_LOGIN'
+export const SET_USER_PROFILE = 'SET_USER_PROFILE'
+export const REMOVE_USER_LOGIN = 'REMOVE_USER_LOGIN'
+export const GET_CART = 'GET_CART'
+export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
+export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART'
+export const CLEAR_CART = 'CLEAR_CART'

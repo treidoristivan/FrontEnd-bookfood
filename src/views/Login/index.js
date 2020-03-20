@@ -9,7 +9,8 @@ import * as Yup from 'yup'
 import CustomTextField from '../../components/CustomTextField'
 import submitData from '../../helpers/submitData'
 import logo from '../../assets/logo.png'
-import Cookies from 'js-cookie'
+import { connect } from 'react-redux'
+import { setUserLogin, getCart } from '../../store/actions'
 
 const theme = createMuiTheme({
   palette: {
@@ -70,8 +71,8 @@ function Login (props) {
                   try {
                     const response = await submitData('/login', values)
                     if (response && response.data.success) {
-                      Cookies.set('ujang', response.data.data.token, { expires: (1 / 24) })
-                      setIsLogin(1)
+                      setUserLogin(response.data.data.token, response.data.data.dataUser)
+                      getCart()
                       history.push('/')
                     }
                     setMsg({ display: 1, success: response.data.success, message: response.data.msg })
@@ -112,4 +113,8 @@ function Login (props) {
     </>
   )
 }
-export default Login
+const mapDispatchtoProps = {
+  setUserLogin,
+  getCart
+}
+export default connect(null, mapDispatchtoProps)(Login)

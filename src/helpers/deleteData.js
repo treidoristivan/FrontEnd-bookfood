@@ -1,12 +1,14 @@
 import axios from 'axios'
-import cookie from 'js-cookie'
+import storage from '../store'
+
 function deleteData (dataUrl, dataForm) {
   return new Promise((resolve, reject) => {
     const config = {}
-    if (cookie.get('ujang')) {
-      config.headers = { Authorization: `Bearer ${cookie.get('ujang')}` }
+    const token = storage.store.getState().dataUser.token
+    if (token) {
+      config.headers = { Authorization: `Bearer ${token}` }
     }
-    const url = `http://localhost:1000${dataUrl}`
+    const url = process.env.REACT_APP_API_BASE_URL + dataUrl
     axios.delete(url, config).then(result => {
       resolve(result)
     }).catch((e) => {

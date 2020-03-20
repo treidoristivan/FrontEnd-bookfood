@@ -1,10 +1,11 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import cookie from 'js-cookie'
-
-export default function Logout (props) {
-  const { setIsLogin } = props
-  cookie.remove('ujang')
-  setIsLogin(0)
+import { connect } from 'react-redux'
+import { removeUserLogin, clearCart } from '../../store/actions'
+function Logout (props) {
+  props.removeUserLogin()
+  props.clearCart()
   return (<Redirect to='/login' />)
 }
+
+export default connect(null, { removeUserLogin, clearCart })(Logout)

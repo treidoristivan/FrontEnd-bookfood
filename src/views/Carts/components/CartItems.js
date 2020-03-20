@@ -63,7 +63,7 @@ export default function CartItems (props) {
     }
   }
   React.useEffect(() => {
-    setItemCart(props.data.data ? props.data.data.itemInCart : [])
+    setItemCart(props.data ? props.data.itemInCart : [])
   }, [props])
   return (
     <>
@@ -86,12 +86,12 @@ export default function CartItems (props) {
         <DialogContentText align='center' style={{ marginTop: '10px' }}>Add or Less items</DialogContentText>
         <DialogContent>
           <Formik
-            enableReinitialize
-            initialValues={initialValues}
-            validationSchema={
-              !initialValues.id ? Yup.object({ total_items: Yup.number().required() }) : Yup.object({ total_items: Yup.number().nullable() })
-            }
-            onSubmit={async (values) => {
+             enableReinitialize
+             initialValues={initialValues}
+             validationSchema={
+               !initialValues.id ? Yup.object({ total_items: Yup.number().required() }) : Yup.object({ total_items: Yup.number().nullable() })
+             }
+             onSubmit={async (values) => {
               try {
                 const response = await patchData('/carts/' + values.id, { total_items: values.total_items })
                 if (response.data.success) {
@@ -143,7 +143,7 @@ export default function CartItems (props) {
                       <IconButton onClick={() => handleOpenDialogDelete(cart._id)}><Delete /></IconButton>
                     </TableCell>
                     <TableCell align='right'>
-                      <Avatar alt={cart.name_item} src={(process.env.REACT_APP_API_URL + '/' + cart.images)} style={{ height: '50px', width: '50px' }} />
+                      <Avatar alt={cart.name_item} src={(process.env.REACT_APP_API_BASE_URL + '/' + cart.images)} style={{ height: '50px', width: '50px' }} />
                     </TableCell>
                     <TableCell align='right'>{cart.name_item}</TableCell>
                     <TableCell align='right'>
