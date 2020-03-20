@@ -27,8 +27,8 @@ const useStyles = makeStyles(() => ({
   
   imageContainer: {
     position: 'sticky',
-    marginTop:'0px',
-    marginBottom:'0px',
+    marginTop:'-95px',
+    marginBottom:'20px',
     marginLeft:'0px',
     marginRight:'0px',
     width: '100%',
@@ -37,8 +37,11 @@ const useStyles = makeStyles(() => ({
   },
   image: {
     width: '100%',
-    height: '120%',
+    height: '100%',
     position: 'center center'
+  },
+  logo: {
+    marginBottom: '30px'
   },
   Show: {
     position: 'absolute',
@@ -53,11 +56,13 @@ const useStyles = makeStyles(() => ({
     padding:'20px',
     left:'0%'
   },
-  btn: {
+  btnReady: {
+    zIndex:'999999999',
     color: '#ffc400',
     fontWeight:800,
     backgroundColor:'#ffc400s',
-    boxShadow: '0px 1px 8px #ffcc00'
+    boxShadow: '0px 1px 8px #ffcc00',
+    position:'absolute'
 
   },
   i:{
@@ -94,11 +99,11 @@ function Item (props) {
     <Paper elevation={0} className={classes.imageContainer}>
       <img src={props.item.img} className={classes.image} />
       <div className={classes.itemDescription}>
-      <img alt='logo' src={logo}/>
+      <img className={classes.logo} alt='logo' src={logo}/>
       <Typography className={classes.i}>Welcome To Our Kitchen!</Typography>
       <Typography className={classes.h2}>Delivery More Delicious</Typography>
       <MuiThemeProvider theme={theme}>
-      <Button variant='contained' color='primary'className={classes.btn}  to='/items' component={Link}>Ready To Order</Button>
+      <Button variant='contained' color='primary'className={classes.btnReady}  to='/items' component={Link}>Ready To Order</Button>
       </MuiThemeProvider>
       </div>
     </Paper>
