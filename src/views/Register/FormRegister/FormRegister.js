@@ -16,7 +16,7 @@ function FormRegister (props) {
       />
       <CustomTextField
         component={TextField}
-        fullWidth margin='normal' label='E-Mail' name='email' variant='outlined' type='text'
+        fullWidth margin='normal' label='E-mail' name='email' variant='outlined' type='text'
       />
       <CustomTextField
         component={TextField}

@@ -34,17 +34,17 @@ const useStyles = makeStyles({
   }
 })
 
-const initialFormRegistrasi = {username: '', password: '', confirm_password: ''}
-const msgRequired ='This is Required'
+const initialFormRegistrasi = {username: '',email: '', password: '', confirm_password: ''}
+const msgRequired ='Fill out this Section !'
 const validationFormRegistrasi = Yup.object({
   username: Yup.string().min(6, 'Username have 6 character or more')
     .required(msgRequired),
-  password: Yup.string().min(8, 'Username have 8 character or more')
+  password: Yup.string().min(8, 'Password have 8 character or more')
     .required(msgRequired),
   email: Yup.string().email('Invalid email address')
     .required(msgRequired),
   confirm_password: Yup.string()
-    .oneOf([Yup.ref('password')], 'Confirm Password Not Match').required(msgRequired)
+    .oneOf([Yup.ref('password')], 'Confirm Password Doesnt Match Password').required(msgRequired)
 })
 
 function LayoutRegister (props) {
