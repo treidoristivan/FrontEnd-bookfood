@@ -1,10 +1,10 @@
 import React from 'react'
-import {Formik} from 'formik'
+import { Formik } from 'formik'
 import * as Yup from 'yup'
 import FormUser from './components/FormUser'
 
 const initialFormUser = { fullname: '', username: '', password: '', email: '', gender: 'male', role: 1 }
-const msgRequired ='This is Required'
+const msgRequired = 'This is Required'
 const validationFormUser = Yup.object({
   fullname: Yup.string().required(msgRequired),
   username: Yup.string()
@@ -26,7 +26,7 @@ const validationFormUser = Yup.object({
       [1, 2, 3],
       'Invalid Role'
     )
-    .required(msgRequired),
+    .required(msgRequired)
 })
 export default function User (props) {
   return (

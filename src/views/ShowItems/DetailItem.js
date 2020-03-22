@@ -109,6 +109,7 @@ export default function DetailsItem (props) {
                   initialValues={{ total_items: 1, id_item: dataItem._id }}
                   validationSchema={Yup.object({ total_items: Yup.number().required() })}
                   onSubmit={async (values, form) => {
+                    console.log('KEmana', values)
                     try {
                       const response = await submitData('/carts', values)
                       if (response.data.success) {

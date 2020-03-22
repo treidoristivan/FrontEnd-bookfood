@@ -8,6 +8,17 @@ import getData from '../../../helpers/getData'
 import { Edit, Delete } from '@material-ui/icons'
 import deleteData from '../../../helpers/deleteData'
 import AlertDelete from '../../../components/AlertDelete'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 export default function ListItem (props) {
   const { setInitialValue, handleClickOpenForm } = props
@@ -52,7 +63,7 @@ export default function ListItem (props) {
       props.showMessage(response.data)
     } catch (e) {
       console.log(e)
-      console.log(e.response.data)
+      console.log(e.response)
       props.showMessage(e.response.data)
     }
   }
@@ -61,6 +72,7 @@ export default function ListItem (props) {
   }, [props, page])
   return (
     <>
+    <MuiThemeProvider theme={theme}>
       <AlertDelete
         open={openDialogDelete}
         maxWidth='sm'
@@ -118,6 +130,7 @@ export default function ListItem (props) {
           </Grid>
         )
       }
+      </MuiThemeProvider>
     </>
   )
 }

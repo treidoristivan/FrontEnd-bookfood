@@ -37,8 +37,8 @@ export default function CheckoutDetails (props) {
   }
   const [detailCheckout, setDetailCheckout] = React.useState({})
   React.useEffect(() => {
-    setDetailCheckout(props.data.data)
-    console.log(detailCheckout)
+    setDetailCheckout(props.data)
+    console.log('Harga',detailCheckout)
   }, [props])
   return (
     <>
@@ -52,10 +52,10 @@ export default function CheckoutDetails (props) {
                 Cart Details Purchase
               </Typography>
               <Typography align='center'>
-                Total Price: {detailCheckout.totalPrice}
+                Total Price: {detailCheckout ? detailCheckout.totalPrice:0} 
               </Typography>
               <Typography align='center'>
-                Total Type Items: {detailCheckout.totalTypeItems}
+                Total Type Items: {detailCheckout ? detailCheckout.totalTypeItems:0}
               </Typography>
             </CardContent>
             <CardActions style={{ marginTop: 20, marginBottom: 30 }}>

@@ -2,10 +2,23 @@ import React from 'react'
 import {
   Slide, Snackbar, Dialog, Grid, Typography, IconButton
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Close as CloseIcon, Edit as EditIcon } from '@material-ui/icons'
 import { Alert, SpeedDial, SpeedDialIcon } from '@material-ui/lab'
 import FormItem from './components/FormItem'
 import ListItem from './components/ListItem'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='right' ref={ref} {...props} />;
@@ -33,6 +46,7 @@ export default function Items (props) {
   }
   return (
     <>
+              <MuiThemeProvider theme={theme}>
        <Typography variant='h5' align='center' style={{marginBottom:'20px'}}>Items</Typography>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} onClose={handleClose}>
         <Alert variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
@@ -66,6 +80,7 @@ export default function Items (props) {
         onClick={handleClickOpenForm}
         open={false}
       />
+</MuiThemeProvider>
     </>
   )
 }

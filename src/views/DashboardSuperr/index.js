@@ -6,13 +6,11 @@ import Categories from './Categories'
 import Restaurants from './Restaurants'
 import Items from './Items'
 const listPage = {
-  dashboard: Dashboard,
-  users: User,
+  dashboard: Restaurants,
   categories: Categories,
-  restaurants: Restaurants,
   items: Items
 }
-export default function DashboardAdmin (props) {
+export default function DashboardSuperr (props) {
   const showPage = props.match.params.page
   let Page = listPage.dashboard
   if (showPage) {

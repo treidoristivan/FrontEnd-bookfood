@@ -1,11 +1,26 @@
 import React from 'react'
-import { Grid, Card, CardHeader, CardContent, CardActions, Button, TextField } from '@material-ui/core'
+import { Grid, Card, CardHeader, CardContent, CardActions, Button, TextField,makeStyles } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import CustomTextField from '../../../components/CustomTextField'
 import submitData from '../../../helpers/submitData'
 import patchData from '../../../helpers/patchData'
 const msgRequired = 'This is Required'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+const useStyles = makeStyles({
+  
+})
 
 export default function FormCategories (props) {
   const { setMsg, update, initialValues, setInitialValues, handleCloseForm } = props

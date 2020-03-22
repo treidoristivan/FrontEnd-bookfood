@@ -8,6 +8,17 @@ import CustomTextField from '../../../components/CustomTextField'
 import getData from '../../../helpers/getData'
 import submitData from '../../../helpers/submitData'
 import patchData from '../../../helpers/patchData'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 const msgRequired = 'This is Required'
 
@@ -60,12 +71,13 @@ export default function FormItem (props) {
     getCategory()
   }, [])
   return (
+    <MuiThemeProvider theme={theme}>
+
     <Formik
       enableReinitialize
       initialValues={initialValue}
       validationSchema={!update ? validateCreate : validateUpdate}
       onSubmit={async (values, form) => {
-        
         try {
           let response
           const formData = new FormData()
@@ -79,7 +91,6 @@ export default function FormItem (props) {
               formData.append(v, values[v])
             })
             response = await patchData(`/items/${update}`, formData)
-            console.log(response)
           }
           if (response.data.success) {
             showMessage(response.data)
@@ -180,5 +191,6 @@ export default function FormItem (props) {
         </Card>
       </Form>
     </Formik>
+    </MuiThemeProvider>
   )
 }

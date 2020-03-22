@@ -17,8 +17,8 @@ import ForgotPassword from './views/ForgotPassword'
 import ShowItems from './views/ShowItems'
 import DetailItem from './views/ShowItems/DetailItem'
 import ShowCarts from './views/Carts'
-import DashboardSuper from './views/DashboardSuper'
-import DashboardAdmin from './views/DashboardAdmin'
+import DashboardSuperr from './views/DashboardSuperr'
+import DashboardAdminn from './views/DashboardAdminn'
 import Page404 from './views/Page404'
 import Page403 from './views/Page403'
 
@@ -97,14 +97,14 @@ function App (props) {
                       exact
                       path='/admin'
                       title='DashBoard'
-                      component={DashboardAdmin}
+                      component={DashboardSuperr}
                       layout={LayoutSuper}
                     />
                     <SuperAdminRoute
                       exact
                       path='/admin/:page'
                       title='DashBoard'
-                      component={DashboardSuper}
+                      component={DashboardSuperr}
                       layout={LayoutSuper}
                     />
                     {/* END SUPER ADMIN */}
@@ -115,14 +115,14 @@ function App (props) {
                                 exact
                                 path='/restaurant/admin'
                                 title='DashBoard'
-                                component={DashboardAdmin}
+                                component={DashboardAdminn}
                                 layout={LayoutAdmin}
                               />
                               <AdminRoute
                                 exact
                                 path='/restaurant/admin/:page'
                                 title='DashBoard'
-                                component={DashboardAdmin}
+                                component={DashboardAdminn}
                                 layout={LayoutAdmin}
                               />
                               {/* END Admin Restaurant */}

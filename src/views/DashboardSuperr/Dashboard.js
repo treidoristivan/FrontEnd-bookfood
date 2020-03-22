@@ -2,12 +2,23 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import { Grid, Card, CardContent, Typography, Avatar } from '@material-ui/core'
 import { Store, Fastfood, MonetizationOn, PeopleAlt } from '@material-ui/icons'
-import {makeStyles} from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 const useStyles = makeStyles({
   avatar: {
-    backgroundColor:'red',
-    height:'56',
+    backgroundColor: 'red',
+    height: '56',
     width: '56'
   }
 })
@@ -15,6 +26,7 @@ export default function Dashboard (props) {
   const classes = useStyles()
   return (
     <>
+    <MuiThemeProvider theme={theme}>
       <Grid container component={Container} justify='center' spacing={5}>
         <Grid item>
           <Card>
@@ -141,6 +153,7 @@ export default function Dashboard (props) {
           </Card>
         </Grid>
       </Grid>
+      </MuiThemeProvider>
     </>
   )
 }

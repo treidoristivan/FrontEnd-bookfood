@@ -4,20 +4,22 @@ import { Dashboard, PeopleAlt, Fastfood, Input, AccountCircle } from '@material-
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 
+
 const useStyles = makeStyles({
   sideNav: {
     width: '270px',
-    paddingTop: '80px'
+    paddingTop: '80px',
+    backgroundColor:'#008080'
   }
 })
 export default function DashboardLayout (props) {
-  const closses = useStyles()
+  const classes = useStyles()
   const handleClose = (e) => {
     props.setOpen(0)
   }
   return (
     <Drawer open={props.open} onClose={handleClose}>
-      <Grid justify='center' maxWidht='xl' container className={closses.sideNav}>
+      <Grid justify='center' maxWidht='xl' container className={classes.sideNav}>
         <List>
           <ListItem button to='/restaurant/admin' component={Link}>
             <ListItemIcon><Dashboard /></ListItemIcon>

@@ -7,7 +7,9 @@ import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles({
   sideNav: {
     width:'270px',
-    paddingTop:'80px'
+    paddingTop:'80px',
+    backgroundColor:'#008080'
+
   }
 })
 export default function DashboardLayout (props) {

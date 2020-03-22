@@ -37,7 +37,7 @@ export default function FormItem (props) {
   const [restaurant, setRestaurant] = React.useState([])
   const getrestaurant = async () => {
     try {
-      const response = await getData('/users/restaurants')
+      const response = await getData('/browse-restaurants')
       if (response.data.success && response.data.data) {
         setRestaurant(response.data.data)
       }

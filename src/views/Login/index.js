@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Grid, TextField, Card, CardHeader, Button, CardMedia, CardActions, Snackbar, Typography } from '@material-ui/core'
+import { Grid, TextField, Card, CardHeader, Button, CardMedia, CardActions, Snackbar } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Alert} from '@material-ui/lab'
 import { makeStyles } from '@material-ui/styles'
@@ -33,6 +33,9 @@ const useStyles = makeStyles({
   img: {
     width: '180px',
     height: '60px'
+  },
+  warna: {
+    color:'#008080'
   }
 })
 const initialFormLogin = {username: '', password: ''}
@@ -99,8 +102,8 @@ function Login (props) {
               </Formik>
             </CardMedia>
             <CardActions>
-            <Button size='small' color='primary' to='/forgot-password' component={Link}>
-                Forgot Passoword?
+            <Button size='small' color='primary'  to='/forgot-password' component={Link}>
+                <p className={classes.warna}>Forgot Passoword?</p>
               </Button>
             <Button size='medium' variant='contained' color='primary' to='/register' component={Link}>
               Sign Up

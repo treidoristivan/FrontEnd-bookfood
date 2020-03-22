@@ -1,10 +1,23 @@
 import React from 'react'
 import FormCategories from './components/FormCategories'
 import {
-  Snackbar, Button, Dialog, DialogContent, DialogActions, Typography
+  Snackbar, Button, Dialog, DialogContent, DialogActions, Typography,
 } from '@material-ui/core'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Alert, SpeedDial, SpeedDialIcon } from '@material-ui/lab'
 import ListCategories from './components/ListCategories'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
+
 
 export default function Categories (props) {
   const [msg, setMsg] = React.useState({ display: 0, success: false, message: '' })
@@ -24,7 +37,9 @@ export default function Categories (props) {
   }
   return (
     <>
-      <Typography variant='h5' align='center' style={{marginBottom:'20px'}}>Categories</Typography>
+          <MuiThemeProvider theme={theme}>
+
+      <Typography color='primary' variant='h5' align='center' style={{marginBottom:'20px'}}>Categories</Typography>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}
@@ -63,6 +78,7 @@ export default function Categories (props) {
         onClick={handleOpenForm}
         open={false}
       />
+      </MuiThemeProvider>
     </>
   )
 }

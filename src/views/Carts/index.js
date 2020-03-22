@@ -23,6 +23,7 @@ const theme = createMuiTheme({
 });
 
 function getStepContent (page, setActiveStep, data, setMsg) {
+  console.log('Manalagi',data)
   switch (page) {
     case 0:
       return (<CartItems setActiveStep={setActiveStep} data={data} style={{ marginBotton: '40px' }} setMsg={setMsg} />)

@@ -71,15 +71,15 @@ function Profile (props) {
       console.log(e.response)
     }
   }
-  const getHistory = async () => {
-    try {
-      const response = await getData('/history?limit=100')
-      setUserTransaction(response.data.data.reverse())
-    } catch (e) {
-      console.log(e)
-      console.log(e.response)
-    }
-  }
+  // const getHistory = async () => {
+  //   try {
+  //     const response = await getData('/history?limit=100')
+  //     setUserTransaction(response.data.data.reverse())
+  //   } catch (e) {
+  //     console.log(e)
+  //     console.log(e.response)
+  //   }
+  // }
   const createReview = (id) => {
     setInitialValuesR(prevState => ({ ...prevState, id_item: id }))
     setOpenForm(1)
@@ -111,7 +111,7 @@ function Profile (props) {
   React.useEffect(() => {
     getUserData()
     getReviews()
-    getHistory()
+    // getHistory()
   }, [statusEdit, userPic, openForm, openDialogDelete])
   return (
     <>
@@ -130,17 +130,13 @@ function Profile (props) {
       </Snackbar>
       <Container style={{ marginTop: '50px' }}>
         <Grid container justify='center' alignItems='center'>
-          <Grid item xs={12} sm={9} md={5} component={Card} elevation={2} style={{ position: 'relative', overflow: 'hidden' }} >
+      
+      <Grid item xs={8}  >
             <CardProfile userPic={userPic} userData={userData} statusEdit={statusEdit} setStatusEdit={setStatusEdit} setMsg={setMsg} />
+
             <CardEditProfile setUserPic={setUserPic} userData={userData} setUserData={setUserData} statusEdit={statusEdit} setStatusEdit={setStatusEdit} setMsg={setMsg} />
-          </Grid>
-          <Hidden smDown>
-            <Grid style={{ paddingLeft: '60px'}}>
-              <Typography variant='h5' align='right' color='textSecondary'> We Try to</Typography>
-              <Typography variant='h4' align='right' color='textSecondary' style={{ marginBottom: '20px' }}> Make You Life Easier</Typography>
-              {/* <img alt='img' src={backgroundProfile} style={{ width: '350px' }} /> */}
             </Grid>
-          </Hidden>
+          
         </Grid>
         <Paper style={{ marginTop: '40px' }}>
           <Tabs
@@ -150,12 +146,12 @@ function Profile (props) {
             onChange={handleChange}
             aria-label='disabled tabs example'
           >
-            <Tab label='History Transaction' />
-            <Tab label='Recently added Reviews' />
+            {/* <Tab label='History Transaction' /> */}
+            {/* <Tab label='Recently added Reviews' /> */}
           </Tabs>
         </Paper>
         <Container>
-          <TabPanel value={value} index={0}>
+          {/* <TabPanel value={value} index={0}>
             {userTransaction && userTransaction.map((histransaction) => (
               <div key={histransaction._id}>
                 <Paper style={{marginBottom:'10px', padding:'5px', paddingLeft:'20px'}}>
@@ -194,7 +190,7 @@ function Profile (props) {
                 </Grid>
               </div>
             ))}
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel value={value} index={1}>
             <Grid container justify='center' sytle={{ marginTop: '10px' }}>
               {userReview && userReview.map((review) => (

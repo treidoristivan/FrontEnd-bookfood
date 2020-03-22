@@ -5,7 +5,7 @@ import Items from './Items'
 const listPage = {
   dashboard: Items
 }
-export default function DashboardAdmin (props) {
+export default function DashboardAdminn (props) {
   const showPage = props.match.params.page
   let Page = listPage.dashboard
   if (showPage) {

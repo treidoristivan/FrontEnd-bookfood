@@ -5,7 +5,7 @@ import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { AppBar, Container, Toolbar, Drawer, Button, Link, Badge } from '@material-ui/core'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../../assets/logo.png'
 import logo2 from '../../assets/logo2.png'
 import { connect } from 'react-redux'
@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
     boxShadow: '5px 0px 5px rgba(0,0,0,.4)'
   },
   ButtonCustom: {
-    margin: 2,
+    margin: '20px',
     color: 'primary',
     fontWeight: 800,
     borderRadius:'10%'
@@ -55,7 +55,7 @@ const useStyles = makeStyles(() => ({
 }))
 function Topbar (props) {
   const classes = useStyles()
-  const { isLogin, totalItem } = props
+  const { isLogin, totalItem, dataProfile } = props
   const [toolbarExpand, setToolbarExpand] = React.useState(false)
   const [isTop, setIsTop] = React.useState(1) 
   const handleExpand = () => {
@@ -79,7 +79,23 @@ function Topbar (props) {
               <img alt='logo' height='48px' src={isTop && props.isHome ? logo2 : logo} />
             </Link>
             <div className={classes.flexGrow} />
-            <ColorButton color='primary' onClick={handleExpand} className={clsx(classes.ButtonCustom, classes.expandPanelIcon, (!isTop && classes.BtnGray), (!props.isHome && classes.BtnGray))}><ExpandMoreIcon /></ColorButton>
+              {
+
+                isLogin ? (
+                  <>
+                  {
+                    dataProfile.is_admin ?  (<><ColorButton color='primary' to='/restaurant/admin' component={RouterLink} sizeSmall>Admin</ColorButton>&nbsp;</>) : ''
+                  }
+                  {
+                    dataProfile.is_superadmin ? (<><ColorButton color='primary' to='/admin' component={RouterLink} sizeSmall>SuperAdmin</ColorButton>&nbsp;</>) : ''
+                  }
+                  </>
+                ):(
+                  null
+                )
+              }
+
+            <ColorButton color='primary' onClick={handleExpand} className={clsx(classes.ButtonCustom, classes.expandPanelIcon, (!isTop && classes.BtnGray), (!props.isHome && classes.BtnGray))}><MenuIcon /></ColorButton>
           </Toolbar>
         </Container>
       </AppBar>
@@ -95,11 +111,10 @@ function Topbar (props) {
             {
               !isLogin ? (
                <>
-                  <ColorButton size='small'  color='primary' to='/login' component={RouterLink} sizeSmall>Sign In</ColorButton>
+                  <ColorButton   color='primary' to='/login' component={RouterLink} sizeSmall>Sign In</ColorButton>
                 </>
               ) : (
-                
-                 <>
+              <>
                  <ColorButton color='primary' to='/profile' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Profile</ColorButton>
                  <ColorButton color='primary'  to='/logout' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Log Out</ColorButton>
                </>
@@ -116,6 +131,7 @@ function Topbar (props) {
 
 const mapStateToProps = (state) => ({
   isLogin: state.dataUser.isLogin,
+  dataProfile: state.dataUser.dataProfile,
   totalItem: state.dataCart.totalTypeItems
 })
 export default connect(mapStateToProps)(Topbar)

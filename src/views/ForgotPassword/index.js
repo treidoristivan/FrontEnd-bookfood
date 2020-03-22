@@ -12,6 +12,17 @@ import * as Yup from 'yup'
 import qs from 'query-string'
 import submitData from '../../helpers/submitData'
 import CustomTextField from '../../components/CustomTextField'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcc00'
+      },
+      secondary: {
+        main: '#008080'
+    }
+  },  
+});
 
 const Transition = React.forwardRef((props, ref) => (
   <Slide ref={ref} direction='down' {...props} />
@@ -26,6 +37,7 @@ function ForgotPassword (props) {
   const params = qs.parse(props.location.search)
   return (
     <>
+    <MuiThemeProvider theme={theme}>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}
@@ -92,7 +104,7 @@ function ForgotPassword (props) {
               </Typography>
             </DialogContent>
           </Dialog> 
-          <Grid container justify='center' style={{ marginTop: '20px' }}>
+          <Grid container justify='center' style={{ marginTop:'500px'}}>
             <Grid xs={10} sm={8} md={6}>
               <Paper style={{ padding: '20px' }}>
                 <Formik
@@ -127,6 +139,7 @@ function ForgotPassword (props) {
             </Grid>
           </Grid>
         </>)}
+        </MuiThemeProvider>
     </>
   )
 }

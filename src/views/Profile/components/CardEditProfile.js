@@ -1,10 +1,11 @@
 import React from 'react'
 import {
-  Paper, Grid, Button, TextField, MenuItem
+  Paper, Grid, Button, TextField, MenuItem, IconButton, Box
 } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme, createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
+import { Image } from '@material-ui/icons'
 import CustomTextField from '../../../components/CustomTextField'
 import pacthData from '../../../helpers/patchData'
 
@@ -25,13 +26,19 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
    
   editProfile: {
-    position: 'absolute',
+    position: 'sticky',
     marginTop:'60px',
     left: '20px',
     top: '42%',
     right: '20px',
     bottom: '60px'
-  }
+  },
+  iconEditPic: {
+    position: 'absolute',
+    top: '10%',
+    right: '3%',
+    
+  },
 })
 )
 
@@ -61,7 +68,6 @@ export default function CardEditProfile (props) {
             const response = await pacthData('/profile', formData)
             setMsg({ display: 1, success: response.data.success, message: response.data.msg })
           } catch (e) {
-            console.log(e)
             setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
           }
           setStatusEdit({ profile: false })
@@ -69,6 +75,13 @@ export default function CardEditProfile (props) {
       > 
         <Form >
           <Grid container justify='center' alignItems='center' spacing={4} >
+
+
+          <Box className={classes.iconEditPic} hidden={!statusEdit.profile}>
+          <IconButton component='label' for='userProfileField' style={{ backgroundColor: 'rgba(0,0,0,.7)' }}><Image style={{ height: '25px', width: '25px', color: 'white' }} /></IconButton>
+          </Box>
+
+
             <Grid item xs={3}>
               <CustomTextField type='text' name='fullname' label='Full Name' variant='outlined' size='small' component={TextField} />
             </Grid>
