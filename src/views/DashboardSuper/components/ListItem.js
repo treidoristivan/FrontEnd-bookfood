@@ -94,7 +94,7 @@ export default function ListItem (props) {
                     </TableCell>
                     <TableCell>
                       <Avatar
-                        alt={item.name_item ? item.name_item : 'item' + item._id} src={(process.env.REACT_APP_API_URL + '/' + item.images)}
+                        alt={item.name_item ? item.name_item : 'item' + item._id} src={(process.env.REACT_APP_API_BASE_URL + '/' + item.images)}
                         style={{ height: '50px', width: '50px' }}
                       />
                     </TableCell>

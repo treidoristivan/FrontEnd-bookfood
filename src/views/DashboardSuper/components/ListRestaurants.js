@@ -95,7 +95,7 @@ export default function ListItem (props) {
                         <Delete />
                       </IconButton>
                     </TableCell>
-                    <TableCell> <Avatar alt={resto.name ? resto.name : 'Res' + resto._id} src={(process.env.REACT_APP_API_URL + '/' + resto.logo)} style={{ height: '50px', width: '50px' }} /></TableCell>
+                    <TableCell> <Avatar alt={resto.name ? resto.name : 'Res' + resto._id} src={(process.env.REACT_APP_API_BASE_URL + '/' + resto.logo)} style={{ height: '50px', width: '50px' }} /></TableCell>
                     <TableCell>{resto.name}</TableCell>
                     <TableCell>{resto.owner}</TableCell>
                     <TableCell>{resto.address}</TableCell>

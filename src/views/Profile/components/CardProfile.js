@@ -59,7 +59,7 @@ export default function CardProfile (props) {
     <Paper className={classes.paper} elevation={3}>
       <Button className={classes.edit} color='primary' onClick={() => { setStatusEdit({ profile: !statusEdit.profile }) }}>< EditOutlinedIcon/> Edit</Button>
       <Grid  container  justify='center' >
-        <Avatar variant='rounded' alt={userData.username} src={userPic ? userPic : `${process.env.REACT_APP_API_URL}/${userData.picture}`} className={classes.avatar} />
+        <Avatar variant='rounded' alt={userData.username} src={userPic ? userPic : `${process.env.REACT_APP_API_BASE_URL}/${userData.picture}`} className={classes.avatar} />
         <Box className={classes.iconEditPic} hidden={!statusEdit.profile}>
           <IconButton component='label' for='userProfileField' style={{ backgroundColor: 'rgba(255, 255, 255,.7)' }}><Image style={{ height: '25px', width: '25px', color: '#ffcc00' }} /></IconButton>
         </Box>
@@ -77,27 +77,27 @@ export default function CardProfile (props) {
         Address : {userData.address ? userData.address : 'Not Set'}
       </Typography>
       <Typography gutterBottom variant='h6' color='textSecondary' align='center' style={{ marginTop: '30px', marginBottom: '20px' }}>
-          Tambah Saldo
+          Top Up Saldo
       </Typography>
       <Formik
-        initialValues={{ nominal_topup: 0 }}
-        validationSchema={Yup.object({ nominal_topup: Yup.number().required() })}
-        onSubmit={async (values, form) => {
-          setStatusEdit({ balance: true })
-          try {
-            const response = await submitData('/topup', values)
-            if (response.data.success) {
+          initialValues={{ nominal_topup: 0 }}
+          validationSchema={Yup.object({ nominal_topup: Yup.number().required() })}
+          onSubmit={async (values, form) => {
+            setStatusEdit({ balance: true })
+            try {
+              const response = await submitData('/topup', values)
+              if (response.data.success) {
+                setMsg({ display: 1, success: response.data.success, message: response.data.msg })
+                form.setSubmitting(false)
+                form.resetForm()
+              }
               setMsg({ display: 1, success: response.data.success, message: response.data.msg })
-              form.setSubmitting(false)
-              form.resetForm()
+            } catch (e) {
+              console.log(e.response)
+              setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
             }
-            setMsg({ display: 1, success: response.data.success, message: response.data.msg })
-          } catch (e) {
-            console.log(e.response)
-            setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
-          }
-          setStatusEdit({ balance: false })
-        }}
+            setStatusEdit({ balance: false })
+          }}
       >
         <Form>
           <Grid container spacing={3} justify='flex-end' alignItems='center'>

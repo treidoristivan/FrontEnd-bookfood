@@ -9,9 +9,12 @@ import {
 } from '@material-ui/core'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab'
-import RateReviewIcon from '@material-ui/icons/RateReview';
 import { makeStyles } from '@material-ui/styles'
+import { setUserProfile } from '../../store/actions'
 import getData from '../../helpers/getData'
+import RateReviewIcon from '@material-ui/icons/RateReview';
+import { connect } from 'react-redux'
+
 
 const theme = createMuiTheme({
   palette: {
@@ -31,9 +34,9 @@ const useStyles = makeStyles({
     overflowY: 'hidden'
   }
 })
-export default function Profile (props) {
+function Profile (props) {
+  const { userData, setUserData } = props
   const classes = useStyles()
-  const [userData, setUserData] = React.useState({})
   const [userPic, setUserPic] = React.useState('')
   const [userReview, setUserReviews] = React.useState([])
   const [expanded, setExpanded] = React.useState('')
@@ -152,3 +155,10 @@ export default function Profile (props) {
     </>
   )
 }
+const mapStateToProps = (state) => ({
+  userData: state.dataUser.dataProfile
+})
+const mapDispatchToProps = {
+  setUserData: setUserProfile
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Carousel from 'react-material-ui-carousel'
+import Example from './ItemCarousel'
 import { makeStyles } from '@material-ui/styles'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Paper, Typography,Button} from '@material-ui/core'
 import img1 from './assets/banner.jpg'
-import logo from './assets/logo-copy.png'
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './Header.css'
+import '../../../App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles(() => ({
   },
   itemDescription: {
     position: 'absolute',
-    top:'36%',
+    top:'30%',
     fontWeight:800,
     padding:'20px',
     left:'0%'
@@ -62,14 +62,17 @@ const useStyles = makeStyles(() => ({
     fontWeight:800,
     backgroundColor:'#ffc400s',
     boxShadow: '0px 1px 8px #ffcc00',
-    position:'absolute'
+    position:'absolute',
+    left:'4%'
 
   },
   i:{
     fontSize:40,
-    color:'#ffcc00'
+    color:'#ffcc00',
+    left:'4%'
   },
   h2: {
+    padding:'10px',
     fontSize:65,
     color: '#008080'
   }
@@ -99,7 +102,6 @@ function Item (props) {
     <Paper elevation={0} className={classes.imageContainer}>
       <img src={props.item.img} className={classes.image} />
       <div className={classes.itemDescription}>
-      <img className={classes.logo} alt='logo' src={logo}/>
       <Typography className={classes.i}>Welcome To Our Kitchen!</Typography>
       <Typography className={classes.h2}>Delivery More Delicious</Typography>
       <MuiThemeProvider theme={theme}>
@@ -305,6 +307,21 @@ function Item (props) {
             </div>
           </div>
         </div>
+
+        {/* Home Order now section */}
+        <div className="container-fluid text-center py-5 home-cont3">
+          <p className="h1 text-uppercase text-white mt-5 mb-3">Just Order And We Will Deliver You</p>
+          <p className="text-white mb-3">Pellentesque eget justo eget nibh luctus semper at ut tellus.</p>
+          <MuiThemeProvider theme={theme}>
+          <Button variant='contained' color='primary'className={classes.btn}  to='/items' component={Link}> Order Now</Button>
+          </MuiThemeProvider> 
+        </div>
+
+        {/* Home Featured restaurant section */}
+        < Example />
+
+
+
 
     </>
   )

@@ -15,9 +15,7 @@ const useStyles = makeStyles({
    
   }
 })
-export default function CardItems (props) {
-  const [elevation, setElevation] = React.useState(1)
-  const classes = useStyles()
+
   const handleHover = (e) => {
     setElevation(4)
   }

@@ -43,9 +43,9 @@ const validationFormLogin = Yup.object({
 })
 
 function Login (props) {
+  const { setUserLogin, getCart } = props
   const classes = useStyles()
   const history = useHistory()
-  const { setIsLogin } = props
   const [msg, setMsg] = React.useState({ display: 0, success: false, message: '' })
   const handleClose = () => {
     setMsg({ display: 0 })
@@ -65,22 +65,22 @@ function Login (props) {
             <CardHeader style={{ textAlign: 'center' }} title={<img src={logo} className={classes.img}/>} />
             <CardMedia>
               <Formik
-                initialValues={initialFormLogin}
-                validationSchema={validationFormLogin}
-                onSubmit={async (values, form) => {
-                  try {
-                    const response = await submitData('/login', values)
-                    if (response && response.data.success) {
-                      setUserLogin(response.data.data.token, response.data.data.dataUser)
-                      getCart()
-                      history.push('/')
+                  initialValues={initialFormLogin}
+                  validationSchema={validationFormLogin}
+                  onSubmit={async (values, form) => {
+                    try {
+                      const response = await submitData('/login', values)
+                      if (response && response.data.success) {
+                        setUserLogin(response.data.data.token, response.data.data.dataUser)
+                        getCart()
+                        history.push('/')
+                      }
+                      setMsg({ display: 1, success: response.data.success, message: response.data.msg })
+                    } catch (e) {
+                      console.log(e)
+                      setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
                     }
-                    setMsg({ display: 1, success: response.data.success, message: response.data.msg })
-                  } catch (e) {
-                    console.log(e)
-                    setMsg({ display: 1, success: e.response.data.success, message: e.response.data.msg })
-                  }
-                }}
+                  }}
               >
 
                 <Form>

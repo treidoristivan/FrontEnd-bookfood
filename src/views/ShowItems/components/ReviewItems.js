@@ -21,7 +21,7 @@ export default function LayoutReviewItems (props) {
         dataReview.map((review) => (
           <Grid item xs={6} sm={4} md={2} key={review._id}>
             <Card align='center' elevation={2} style={{ paddingTop: '20px' }}>
-              <Avatar variant='rounded' alt={review.username} src={(process.env.REACT_APP_API_URL + '/' + review.pictue)} className={classes.avatar} />
+              <Avatar variant='rounded' alt={review.username} src={(process.env.REACT_APP_API_BASE_URL + '/' + review.pictue)} className={classes.avatar} />
               <CardContent>
                 <Typography gutterBottom variant='subtite1' color='textSecondary'>
                   {review.username}

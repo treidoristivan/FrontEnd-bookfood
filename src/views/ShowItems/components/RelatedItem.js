@@ -18,7 +18,7 @@ export default function RelatedItem (props) {
   const classes = useStyles()
   return (
     <Card align='center' elevation={6} style={{ paddingTop: '20px' }}>
-      <Avatar variant='rounded' alt={props.name} src={(process.env.REACT_APP_API_URL + '/' + props.images)} className={classes.avatar} />
+      <Avatar variant='rounded' alt={props.name} src={(process.env.REACT_APP_API_BASE_URL + '/' + props.images)} className={classes.avatar} />
       <CardContent>
         <Typography gutterBottom variant='subtite1' color='textSecondary'>
           {props.name}

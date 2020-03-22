@@ -85,7 +85,7 @@ export default function DetailsItem (props) {
       <Container>
         <Grid container>
           <Grid item xs={12} sm={4}>
-            <Avatar variant='rounded' alt={dataItem.name} src={(process.env.REACT_APP_API_URL + '/' + dataItem.images)} className={classes.avatar} />
+            <Avatar variant='rounded' alt={dataItem.name} src={(process.env.REACT_APP_API_BASE_URL + '/' + dataItem.images)} className={classes.avatar} />
           </Grid>
           <Grid item xs={12} sm={8}>
             <Card>

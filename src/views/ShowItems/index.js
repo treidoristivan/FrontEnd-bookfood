@@ -107,7 +107,7 @@ function ShowItems (props) {
               dataItems.dataItems ? dataItems.dataItems.map((item) => (
                 <Grid item key={item._id} xs={3}>
                   <Card align='center' style={{ padding: '10px' }}>
-                    <Avatar variant='rounded' alt={item.name} src={process.env.REACT_APP_API_URL + '/' + item.images} className={classes.avatar} />
+                    <Avatar variant='rounded' alt={item.name} src={process.env.REACT_APP_API_BASE_URL + '/' + item.images} className={classes.avatar} />
                     <CardContent>
                       <Typography gutterBottom variant='subtite1' color='primary'>
                         {item.name}
