@@ -26,6 +26,7 @@ export default function Items (props) {
   }
   return (
     <>
+      <Typography variant='h5' align='center' style={{marginBottom:'20px'}}>Restaurant</Typography>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}

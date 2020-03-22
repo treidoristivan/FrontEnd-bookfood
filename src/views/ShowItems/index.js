@@ -74,7 +74,7 @@ function ShowItems (props) {
         url = `/browse-categories/${category}?${condition}`
       }
       const response = await getData(url)
-      console.log(response.data)
+      console.log('Mana', response.data)
       setData(response.data)
     } catch (e) {
       console.log(e)
@@ -104,7 +104,7 @@ function ShowItems (props) {
         <Container className={classes.cont}>
           <Grid container justify='center' spacing={2}>
             {
-              dataItems.dataItems ? dataItems.dataItems.map((item) => (
+              dataItems.data ? dataItems.data.map((item) => (
                 <Grid item key={item._id} xs={3}>
                   <Card align='center' style={{ padding: '10px' }}>
                     <Avatar variant='rounded' alt={item.name} src={process.env.REACT_APP_API_BASE_URL + '/' + item.images} className={classes.avatar} />

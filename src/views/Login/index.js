@@ -99,7 +99,9 @@ function Login (props) {
               </Formik>
             </CardMedia>
             <CardActions>
-            <Typography variant='p' color='textSecondary'>Don't have Account?</Typography>
+            <Button size='small' color='primary' to='/forgot-password' component={Link}>
+                Forgot Passoword?
+              </Button>
             <Button size='medium' variant='contained' color='primary' to='/register' component={Link}>
               Sign Up
             </Button>

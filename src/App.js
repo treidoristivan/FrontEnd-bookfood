@@ -13,6 +13,7 @@ import Login from './views/Login'
 import Profile from './views/Profile'
 import Logout from './views/Logout'
 import Register from './views/Register'
+import ForgotPassword from './views/ForgotPassword'
 import ShowItems from './views/ShowItems'
 import DetailItem from './views/ShowItems/DetailItem'
 import ShowCarts from './views/Carts'
@@ -53,6 +54,13 @@ function App (props) {
           title='Registrasi'
           component={Register}
           layout={MinimalLayout}
+        />
+    <GuestRoute
+          exact
+          path='/forgot-password'
+          title='Forgot Password'
+          component={ForgotPassword}
+          layout={MainLayout}
         />
         <GuestRoute
           exact

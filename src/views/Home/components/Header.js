@@ -5,11 +5,11 @@ import Example from './ItemCarousel'
 import { makeStyles } from '@material-ui/styles'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Paper, Typography,Button} from '@material-ui/core'
-import img1 from './assets/banner.jpg'
-
+import img from './assets/banner.jpg'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../../App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {} from 'react-icons';
 
 
 const theme = createMuiTheme({
@@ -78,29 +78,13 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-const Header = (props) => {
-  const classes = useStyles()
-  const items = [
-    {
-      img: img1
-    }
-  ]
-  return (
-    <Carousel indicators={0} autoPlay={1} className={classes.carousel}>
-      {
-        items.map((item, i) => (
-          <Item item={item} key={i} />
-        ))
-      }
-    </Carousel>
-  )
-}
-function Item (props) {
+
+function Header (props) {
   const classes = useStyles()
   return (
     <>
     <Paper elevation={0} className={classes.imageContainer}>
-      <img src={props.item.img} className={classes.image} />
+      <img src={img} className={classes.image} />
       <div className={classes.itemDescription}>
       <Typography className={classes.i}>Welcome To Our Kitchen!</Typography>
       <Typography className={classes.h2}>Delivery More Delicious</Typography>
@@ -170,13 +154,7 @@ function Item (props) {
                       <h5 className="mb-1">Natural Healthy Food</h5>
                       <p className="mb-2"><small>Apple Juice, Beef Roast, Cheese Burger</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(1) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>
@@ -194,13 +172,7 @@ function Item (props) {
                       <h5 className="mb-1">Menu &amp; Drinks</h5>
                       <p className="mb-2"><small>Chicken Roast, Chines Soup, Cold Coffee</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(3) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>
@@ -218,13 +190,7 @@ function Item (props) {
                       <h5 className="mb-1">Chefs</h5>
                       <p className="mb-2"><small>Egg Fry, Noodles, Pastry</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(1) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>
@@ -242,13 +208,7 @@ function Item (props) {
                       <h5 className="mb-1">Menu's</h5>
                       <p className="mb-2"><small>Fish Fry, Fresh Juice, Stakes</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(1) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>
@@ -266,13 +226,7 @@ function Item (props) {
                       <h5 className="mb-1">Food N&amp;H</h5>
                       <p className="mb-2"><small>Beef Roast, Cheese Burger, Doughnut</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(4) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>
@@ -290,13 +244,7 @@ function Item (props) {
                       <h5 className="mb-1">Restaurant</h5>
                       <p className="mb-2"><small>Apple Juice, BB.Q</small></p>
                       <p>
-                        <small className="">
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                          <FontAwesomeIcon icon="star" className="rating mr-1" />
-                        </small>
+                        
                         <small>(2) Review</small>
                       </p>
                       <span style={{ position: "absolute", top: 5, right: 5 }}><FontAwesomeIcon icon="heart" className="text-success mr-1" /></span>

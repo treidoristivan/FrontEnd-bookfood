@@ -3,12 +3,12 @@ import Topbar from './componets/Topbar'
 import Footer from './componets/Footer'
 
 function MainLayout (props) {
-  const { children, isLogin } = props
+  const { children } = props
   return (
     <>
-      <Topbar isLogin={isLogin} />
+      <Topbar  />
       {children}
-      <Footer isLogin={isLogin}/>
+      <Footer />
     
     </>
   )

@@ -2,9 +2,6 @@ import React from 'react'
 import { Button, TextField, CircularProgress, Grid } from '@material-ui/core'
 import { Form } from 'formik'
 import CustomTextField from '../../../components/CustomTextField'
-
-
-
 function FormRegister (props) {
   const { progres } = props
   return (

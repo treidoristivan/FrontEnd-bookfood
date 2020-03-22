@@ -37,7 +37,7 @@ function getStepContent (page, setActiveStep, data, setMsg) {
   }
 }
 function ShowCarts (props) {
-  const [dataCart, getCart] = props
+  const {dataCart, getCart} = props
   const [activeStep, setActiveStep] = React.useState(0)
   const [msg, setMsg] = React.useState({ display: 0, success: false, message: '' })
   const handleClose = () => {

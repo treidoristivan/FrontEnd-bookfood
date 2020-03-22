@@ -1,7 +1,7 @@
 import React from 'react'
 import FormCategories from './components/FormCategories'
 import {
-  Snackbar, Button, Dialog, DialogContent, DialogActions
+  Snackbar, Button, Dialog, DialogContent, DialogActions, Typography
 } from '@material-ui/core'
 import { Alert, SpeedDial, SpeedDialIcon } from '@material-ui/lab'
 import ListCategories from './components/ListCategories'
@@ -24,6 +24,7 @@ export default function Categories (props) {
   }
   return (
     <>
+      <Typography variant='h5' align='center' style={{marginBottom:'20px'}}>Categories</Typography>
       <Snackbar open={msg.display} autoHideDuration={1000 * 5 * 60} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} onClose={handleClose}>
         <Alert onClose={handleClose} variant='filled' elevation={6} severity={msg.success ? 'success' : 'error'}>
           {msg.message}

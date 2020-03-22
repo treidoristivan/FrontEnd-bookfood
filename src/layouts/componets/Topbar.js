@@ -1,12 +1,11 @@
 import React from 'react'
 import clsx from 'clsx'
 import { Link as RouterLink } from 'react-router-dom'
-import { Theme, createStyles, withStyles, makeStyles } from '@material-ui/core/styles';
+import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { AppBar, Container, Toolbar, Drawer, Button, IconButton, Link, Badge } from '@material-ui/core'
+import { AppBar, Container, Toolbar, Drawer, Button, Link, Badge } from '@material-ui/core'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Close } from '@material-ui/icons'
 import logo from '../../assets/logo.png'
 import logo2 from '../../assets/logo2.png'
 import { connect } from 'react-redux'
@@ -63,7 +62,6 @@ function Topbar (props) {
     setToolbarExpand(!toolbarExpand)
   }
   document.addEventListener('scroll', () => {
-    console.log('alen')
     if (window.scrollY < 100) {
       setIsTop(1)
     } else {
@@ -95,15 +93,16 @@ function Topbar (props) {
             <Badge color='error' badgeContent={totalItem}> Cart</Badge>
             </ColorButton>     
             {
-              isLogin ? (
-                <>
-                  <ColorButton color='primary' to='/profile' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Profile</ColorButton>
-                  <ColorButton color='primary'  to='/logout' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Log Out</ColorButton>
-                </>
-              ) : (
-                <>
+              !isLogin ? (
+               <>
                   <ColorButton size='small'  color='primary' to='/login' component={RouterLink} sizeSmall>Sign In</ColorButton>
                 </>
+              ) : (
+                
+                 <>
+                 <ColorButton color='primary' to='/profile' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Profile</ColorButton>
+                 <ColorButton color='primary'  to='/logout' component={RouterLink} className={clsx(classes.ButtonCustom, classes.BtnGray)}>Log Out</ColorButton>
+               </>
               )
             }
             <ColorButton color='primary' onClick={handleExpand} className={clsx(classes.ButtonCustom, classes.BtnGray)}><ExpandLessIcon /></ColorButton>

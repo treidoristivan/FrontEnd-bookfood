@@ -8,7 +8,6 @@ function getData (dataUrl, dataForm) {
     if (token) {
       config.headers = { Authorization: `Bearer ${token}` }
     }
-    console.log('hek')
     const url = process.env.REACT_APP_API_BASE_URL + dataUrl
     axios.get(url, config).then(result => {
       resolve(result)

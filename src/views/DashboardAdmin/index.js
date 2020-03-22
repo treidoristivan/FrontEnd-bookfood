@@ -3,8 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import Items from './Items'
 const listPage = {
-  dashboard: Dashboard,
-  items: Items
+  dashboard: Items
 }
 export default function DashboardAdmin (props) {
   const showPage = props.match.params.page

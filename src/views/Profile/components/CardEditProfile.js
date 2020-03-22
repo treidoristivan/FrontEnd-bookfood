@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme: Theme) =>
   editProfile: {
     position: 'absolute',
     marginTop:'60px',
-
     left: '20px',
     top: '42%',
     right: '20px',
@@ -41,7 +40,6 @@ export default function CardEditProfile (props) {
   const { userData, setUserPic, statusEdit, setMsg, setStatusEdit } = props
   return (
     <MuiThemeProvider theme={theme}>
-
     <Paper elevation={0} className={classes.editProfile} hidden={!statusEdit.profile}>
       <Formik
         enableReinitialize

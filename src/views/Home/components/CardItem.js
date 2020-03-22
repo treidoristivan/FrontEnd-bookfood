@@ -23,7 +23,7 @@ export default function CardItem (props) {
         <CardMedia
           component='img'
           alt={props.detailItem.name}
-          image={process.env.REACT_APP_API_URL + '/' + props.detailItem.images}
+          image={process.env.REACT_APP_API_BASE_URL + '/' + props.detailItem.images}
           height={150}
           title={props.detailItem.name}
         />
