@@ -24,7 +24,7 @@ import Page403 from './views/Page403'
 
 function App (props) {
   return (
-    <Router>
+    <Router basename={(process.env.PUBLIC_URL || '/')}>
       <Switch>
         <GuestRoute
           exact
